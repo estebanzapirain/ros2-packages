@@ -15,12 +15,14 @@ class MinimalService(Node):
         super().__init__('minimal_service')
         
 
-        # Definición del servicio: interfaz, name y callback
+# Definición del servicio: interfaz, name y callback
         self.srv = self.create_service(SetSpeeds, 'set_speeds', self.set_speeds_callback)
     
-    # Callback del servicio. La request son los 2 enteros a sumar y la response es el resultado
+# Callback del servicio. La request son los 2 enteros a sumar y la response es el resultado
     def set_speeds_callback(self, request, response):
-        comando = "o " + str(request.left) + " " + str(request.right) + "\r\n"
+        
+# Comando para el Arduino ROS Bridge: "o [left] [right]" 
+	comando = "o " + str(request.left) + " " + str(request.right) + "\r\n" # para el logger
         arduino.write(b'o ')
         arduino.write(str(request.left).encode())
         arduino.write(b' ')

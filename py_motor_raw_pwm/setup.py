@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'service = py_motor_raw_pwm.service_member_function:main',
-            'client = py_motor_raw_pwm.client_member_function:main',
+            'SpeedSetter = py_motor_raw_pwm.service_member_function:main',
+            'SetSpeed = py_motor_raw_pwm.client_member_function:main',
         ],
     },
 )
