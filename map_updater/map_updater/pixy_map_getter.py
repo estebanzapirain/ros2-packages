@@ -18,11 +18,13 @@
 import rclpy
 from rclpy.node import Node
 
+# Custom Block message format
 # Message format: "sig: 1 x: 5 y: 117 width: 10 height: 23"
-from std_msgs.msg import String
+from map_interface.msg import Block
 
+
+# Arduino serial init
 import serial
-
 arduino = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 arduino.reset_input_buffer()
 
@@ -30,21 +32,30 @@ class Publisher(Node):
 
     def __init__(self):
         super().__init__('map_publisher')
-        self.publisher_ = self.create_publisher(String, 'map', 10) # (message, topic, queue_size)
-        timer_period = 0.5  # seconds
+        self.publisher_ = self.create_publisher(Block, 'map', 10) # (message, topic, queue_size)
+        timer_period = 0.1  # seconds
 
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
 
 
     def timer_callback(self):
-        msg = String()
+        msg = Block()
         arduino.write(b'm\r')
-        valor = arduino.readline().decode('ascii').rstrip()
-        if valor != b'':
-                msg.data = valor
-                self.publisher_.publish(msg)
-                self.get_logger().info('Bloque: "%s"' % msg.data)
+        str = arduino.readline().decode('ascii').rstrip()
+        if str != "":
+                str_msg = str.split() # Explode string into list
+
+                if len(str_msg)>8:
+                # Get numerical values into message fields
+                        msg.id = int(str_msg[1])
+                        msg.x = int(str_msg[3])
+                        msg.y = int(str_msg[5])
+                        msg.width = int(str_msg[7])
+                        msg.height = int(str_msg[9])
+
+                        self.publisher_.publish(msg)
+                        self.get_logger().info('Bloque: "%s"' % str_msg)
 
 
 def main(args=None):

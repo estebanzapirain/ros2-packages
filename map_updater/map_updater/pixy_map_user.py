@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from map_interface.msg import Block
 
 
 class MapSubscriber(Node):
@@ -9,16 +9,18 @@ class MapSubscriber(Node):
     def __init__(self):
         super().__init__('map_subscriber')
         self.subscription = self.create_subscription(
-            String,
+            Block,
             'map',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info(msg.data)
-        
-
+        self.get_logger().info('id= "%d"' % msg.id)
+        self.get_logger().info('x= "%d"' % msg.x)
+        self.get_logger().info('y= "%d"' % msg.y)
+        self.get_logger().info('width= "%d"' % msg.width)
+        self.get_logger().info('height= "%d"' % msg.height)
 
 def main(args=None):
     rclpy.init(args=args)
