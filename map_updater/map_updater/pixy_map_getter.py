@@ -8,8 +8,8 @@
 # Objective: get map of signatures from PixyCam
 
 # Connects to Arduino, which is connected to Pixy Cam
-# Sends command 'c', gets blocks detected
-# format sig: 1 x: 5 y: 117 width: 10 height: 23
+# Sends command 'c', gets data from detected blocks
+# data format: "sig: 1 x: 5 y: 117 width: 10 height: 23"
 #
 ############################################################
 
@@ -33,7 +33,7 @@ class Publisher(Node):
     def __init__(self):
         super().__init__('map_publisher')
         self.publisher_ = self.create_publisher(Block, 'map', 10) # (message, topic, queue_size)
-        timer_period = 0.1  # seconds
+        timer_period = 0.5  # seconds
 
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
@@ -41,8 +41,10 @@ class Publisher(Node):
 
     def timer_callback(self):
         msg = Block()
-        arduino.write(b'm\r')
-        str = arduino.readline().decode('ascii').rstrip()
+        # arduino.write(b'm\r')
+
+        arduino.write(b'ID01m\r\n')
+        str = arduino.readline().rstrip()
         if str != "":
                 str_msg = str.split() # Explode string into list
 
@@ -55,7 +57,7 @@ class Publisher(Node):
                         msg.height = int(str_msg[9])
 
                         self.publisher_.publish(msg)
-                        self.get_logger().info('Bloque: "%s"' % str_msg)
+                        self.get_logger().info('Block: "%s"' % str_msg)
 
 
 def main(args=None):
