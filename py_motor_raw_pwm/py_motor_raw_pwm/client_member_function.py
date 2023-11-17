@@ -14,7 +14,8 @@ class MinimalClientAsync(Node):
             self.get_logger().info('robot not available, waiting again...')
         self.req = SetSpeeds.Request()
 
-    def send_request(self, left, right):
+    def send_request(self, id, left, right):
+        self.req.id = id
         self.req.left = left
         self.req.right = right
         self.future = self.cli.call_async(self.req)
@@ -26,10 +27,10 @@ def main():
     rclpy.init()
 
     minimal_client = MinimalClientAsync()
-    response = minimal_client.send_request(int(sys.argv[1]), int(sys.argv[2]))
+    response = minimal_client.send_request(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
     minimal_client.get_logger().info(
-        'Pwm Speeds: left: %d right: %d = %d' %
-        (int(sys.argv[1]), int(sys.argv[2]), response.ok))
+        'Pwm Speeds: id: %d left: %d right: %d = %d' %
+        (int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), response.ok))
 
     minimal_client.destroy_node()
     rclpy.shutdown()
