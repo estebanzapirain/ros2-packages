@@ -42,6 +42,7 @@
 
 /* Maximum number of block scans per command */
 #define MAX_SCANS    5
+#define MIN_BLOCKS   4
 
 /*Libraries needed*/
 #include <SPI.h>  
@@ -91,14 +92,43 @@ int runCommand() {
   
     uint16_t blocks = 0;                          // number of blocks detected
     int scan = 0;                                 //scan, up to MAX_SCANS
-    while (blocks == 0 && scan < MAX_SCANS){      //if no blocks detected and MAX_SCANS not reached
+    while (blocks < MIN_BLOCKS && scan < MAX_SCANS){      //if no blocks detected and MAX_SCANS not reached
       blocks = pixy.getBlocks();                  //get blocks
       scan++;                                     //update scan
       if (blocks) //if there are blocks
       {
           for (int j=0; j<blocks; j++)   //print each of them
           {
-            pixy.blocks[j].print();
+            //pixy.blocks[j].print();
+ /*           
+            Serial.print(" s ");
+            Serial.print(pixy.blocks[j].signature);
+            Serial.print(" xh ");
+            Serial.print(pixy.blocks[j].x / 256);
+            Serial.print(" xl ");
+            Serial.print(pixy.blocks[j].x % 256);            
+            Serial.print(" y ");
+            Serial.print(pixy.blocks[j].y);
+            Serial.print(" w ");
+            Serial.print(pixy.blocks[j].width);
+            Serial.print(" h ");
+            Serial.print(pixy.blocks[j].height);
+            Serial.println();
+*/
+            Serial.write(pixy.blocks[j].signature); 
+            char xh = 'N';
+            if (pixy.blocks[j].x > 255){
+              xh = 'S';
+              }
+            int xl = pixy.blocks[j].x % 256;
+            Serial.write(xh); // max(x) is 320, sends MSB(x)
+            Serial.write(xl); // sends LSB(x)            
+            Serial.write(pixy.blocks[j].y);
+            Serial.write(pixy.blocks[j].width);
+            Serial.write(pixy.blocks[j].height);
+            Serial.write(13); //CR
+            Serial.write(10); //LF
+
           }
         }
     }  

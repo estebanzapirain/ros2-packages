@@ -1,6 +1,6 @@
 ############################################################
 #
-# pixy_map_request.py
+# pixy_map_getter.py
 # 
 # ROS Package: map_updater
 # Node type: publisher to topic "map"
