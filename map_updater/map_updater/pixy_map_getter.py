@@ -28,6 +28,12 @@ import serial
 arduino = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 arduino.reset_input_buffer()
 
+#Data length, used to check if data is valid
+BLOCK_LENGTH = 6
+BLOCKS_EXPECTED = 4
+
+frame = 0
+
 class Publisher(Node):
 
     def __init__(self):
@@ -40,24 +46,59 @@ class Publisher(Node):
 
 
     def timer_callback(self):
+        global frame
+        
         msg = Block()
-        # arduino.write(b'm\r')
 
-        arduino.write(b'ID01m\r\n')
-        str = arduino.readline().rstrip()
-        if str != "":
-                str_msg = str.split() # Explode string into list
+        data = [] # init empty data structure
+    
+        arduino.write(b'ID01m\r\n') # send command "m" (GET_MAP) trough serial port
+    
+        blocks = 0
+    
+        # READ DATA
+        while arduino.in_waiting>0: # while there's data available
+            str = arduino.readline().rstrip() # read incoming line and throw away ending \r\n
+            data.append(str) # add line to existing data
+            blocks += 1
 
-                if len(str_msg)>8:
-                # Get numerical values into message fields
-                        msg.id = int(str_msg[1])
-                        msg.x = int(str_msg[3])
-                        msg.y = int(str_msg[5])
-                        msg.width = int(str_msg[7])
-                        msg.height = int(str_msg[9])
-
-                        self.publisher_.publish(msg)
-                        self.get_logger().info('Block: "%s"' % str_msg)
+        print(blocks) # print quantity of blocks
+        
+        if blocks >= BLOCKS_EXPECTED:  # if data is valid
+            frame += 1
+            
+       # PROCESS DATA    
+        for block in data: #for each block
+            if (len(block)>0): #if there is data
+      
+                if block[0] == 73: #if begins with IDxx, data starts at index 4
+                    start = 4
+                else:
+                    start = 0
+                    
+                if len(block)>=start + BLOCK_LENGTH: #check length of data    
+                                        
+                    #--------------    split block       -----------------------
+                    msg.frame = frame
+                    msg.sig = block[start]
+                    
+                    #x range exceeds 8 bits, so it comes divided into 2 bytes
+                    #MSB is 'S' if x exceeds 256
+                    if block[start + 1] == ord('S'):
+                        xh = 1
+                    else:
+                        xh = 0    
+                    msg.x = 256 * xh + block[start + 2]
+                    
+                    msg.y = block[start + 3]
+                    msg.width = block[start + 4]
+                    msg.height = block[start + 5]
+                    #-----------------------------------------------------------
+                    
+                    #Publish
+                    print(msg.frame, msg.sig, msg.x, msg.y, msg.width, msg.height)
+                    self.publisher_.publish(msg)
+                    # self.get_logger().info('Block: "%s"' % block)
 
 
 def main(args=None):

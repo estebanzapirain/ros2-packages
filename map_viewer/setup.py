@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'map_updater'
+package_name = 'map_viewer'
 
 setup(
     name=package_name,
@@ -15,13 +15,12 @@ setup(
     zip_safe=True,
     maintainer='robot1',
     maintainer_email='estebanzapirain@gmail.com',
-    description='Gets map of signatures from PixyCam',
-    license='Apache 2.0',
+    description='Shows objects acquired by PixyCam',
+    license='Apache 2',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-		'map_getter = map_updater.pixy_map_getter:main',
-
+        'map_view = map_viewer.viewer:main',
         ],
     },
 )
