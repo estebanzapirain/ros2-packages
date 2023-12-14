@@ -32,14 +32,18 @@ arduino.reset_input_buffer()
 BLOCK_LENGTH = 6
 BLOCKS_EXPECTED = 4
 
+#frame number
 frame = 0
+
+#frames per second
+fps = 2
 
 class Publisher(Node):
 
     def __init__(self):
         super().__init__('map_publisher')
         self.publisher_ = self.create_publisher(Block, 'map', 10) # (message, topic, queue_size)
-        timer_period = 0.5  # seconds
+        timer_period = 1/fps  
 
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
