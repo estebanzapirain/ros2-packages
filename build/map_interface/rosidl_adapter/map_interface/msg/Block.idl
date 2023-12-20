@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from map_interface/msg/Block.msg
+// generated code does not contain a copyright notice
+
+
+module map_interface {
+  module msg {
+    struct Block {
+      int64 frame;
+
+      int64 sig;
+
+      int64 x;
+
+      int64 y;
+
+      int64 width;
+
+      int64 height;
+    };
+  };
+};

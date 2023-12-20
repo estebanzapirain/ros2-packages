@@ -1,0 +1,225 @@
+[0.305s] Invoking command in '/home/robot1/ros2_ws/src/build/map_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake /home/robot1/ros2_ws/src/map_interface -DCMAKE_INSTALL_PREFIX=/home/robot1/ros2_ws/src/install/map_interface
+[0.575s] -- The C compiler identification is GNU 11.4.0
+[0.828s] -- The CXX compiler identification is GNU 11.4.0
+[0.859s] -- Detecting C compiler ABI info
+[1.183s] -- Detecting C compiler ABI info - done
+[1.210s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.210s] -- Detecting C compile features
+[1.212s] -- Detecting C compile features - done
+[1.223s] -- Detecting CXX compiler ABI info
+[1.573s] -- Detecting CXX compiler ABI info - done
+[1.603s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.605s] -- Detecting CXX compile features
+[1.606s] -- Detecting CXX compile features - done
+[1.643s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.577s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[3.272s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[3.305s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.388s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.785s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.047s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[5.488s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[6.509s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.678s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.795s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[7.823s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[7.952s] -- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[7.953s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[7.953s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[7.953s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+[8.069s] -- Found PythonExtra: .so  
+[8.264s] -- Added test 'lint_cmake' to check CMake code style
+[8.275s] -- Added test 'xmllint' to check XML markup files
+[8.305s] -- Configuring done
+[8.453s] -- Generating done
+[8.465s] -- Build files have been written to: /home/robot1/ros2_ws/src/build/map_interface
+[8.485s] Invoked command in '/home/robot1/ros2_ws/src/build/map_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake /home/robot1/ros2_ws/src/map_interface -DCMAKE_INSTALL_PREFIX=/home/robot1/ros2_ws/src/install/map_interface
+[8.497s] Invoking command in '/home/robot1/ros2_ws/src/build/map_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake --build /home/robot1/ros2_ws/src/build/map_interface -- -j4 -l4
+[8.669s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[8.716s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[8.759s] [  6%] Built target ament_cmake_python_copy_map_interface
+[10.091s] [  6%] Built target map_interface__cpp
+[10.180s] [  9%] [32mBuilding C object CMakeFiles/map_interface__rosidl_generator_c.dir/rosidl_generator_c/map_interface/msg/detail/block__functions.c.o[0m
+[10.198s] [ 12%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[10.207s] [ 16%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[10.476s] [ 19%] [32m[1mLinking C shared library libmap_interface__rosidl_generator_c.so[0m
+[10.589s] running egg_info
+[10.596s] creating map_interface.egg-info
+[10.597s] writing map_interface.egg-info/PKG-INFO
+[10.598s] writing dependency_links to map_interface.egg-info/dependency_links.txt
+[10.599s] writing top-level names to map_interface.egg-info/top_level.txt
+[10.600s] writing manifest file 'map_interface.egg-info/SOURCES.txt'
+[10.612s] reading manifest file 'map_interface.egg-info/SOURCES.txt'
+[10.615s] writing manifest file 'map_interface.egg-info/SOURCES.txt'
+[10.810s] [ 19%] Built target ament_cmake_python_build_map_interface_egg
+[10.867s] [ 22%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[10.941s] [ 22%] Built target map_interface__rosidl_generator_c
+[11.073s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[11.856s] [ 29%] [32mBuilding CXX object CMakeFiles/map_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/map_interface/msg/block__type_support.cpp.o[0m
+[11.913s] [ 32%] [32mBuilding CXX object CMakeFiles/map_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/map_interface/msg/detail/dds_fastrtps/block__type_support.cpp.o[0m
+[12.736s] [ 35%] [32mBuilding CXX object CMakeFiles/map_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/map_interface/msg/detail/block__type_support.cpp.o[0m
+[13.034s] [ 38%] [32mBuilding CXX object CMakeFiles/map_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/map_interface/msg/detail/block__type_support_c.cpp.o[0m
+[13.740s] [ 41%] [32m[1mLinking CXX shared library libmap_interface__rosidl_typesupport_cpp.so[0m
+[14.131s] [ 41%] Built target map_interface__rosidl_typesupport_cpp
+[14.233s] [ 45%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[15.114s] [ 48%] [32m[1mLinking CXX shared library libmap_interface__rosidl_typesupport_fastrtps_cpp.so[0m
+[15.549s] [ 51%] [32m[1mLinking CXX shared library libmap_interface__rosidl_typesupport_introspection_cpp.so[0m
+[15.630s] [ 51%] Built target map_interface__rosidl_typesupport_fastrtps_cpp
+[15.639s] [ 54%] [32m[1mLinking CXX shared library libmap_interface__rosidl_typesupport_fastrtps_c.so[0m
+[15.701s] [ 58%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[15.790s] [ 58%] Built target map_interface__rosidl_typesupport_introspection_cpp
+[15.883s] [ 61%] [32mBuilding C object CMakeFiles/map_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/map_interface/msg/detail/block__type_support.c.o[0m
+[16.042s] [ 61%] Built target map_interface__rosidl_typesupport_fastrtps_c
+[16.080s] [ 64%] [32m[1mLinking C shared library libmap_interface__rosidl_typesupport_introspection_c.so[0m
+[16.221s] [ 64%] Built target map_interface__rosidl_typesupport_introspection_c
+[16.785s] [ 67%] [32mBuilding CXX object CMakeFiles/map_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/map_interface/msg/block__type_support.cpp.o[0m
+[16.932s] [ 70%] [32m[1mLinking CXX shared library libmap_interface__rosidl_typesupport_c.so[0m
+[17.096s] [ 70%] Built target map_interface__rosidl_typesupport_c
+[17.188s] [ 70%] Built target map_interface
+[17.281s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[18.603s] [ 74%] Built target map_interface__py
+[18.695s] [ 77%] [32mBuilding C object CMakeFiles/map_interface__rosidl_generator_py.dir/rosidl_generator_py/map_interface/msg/_block_s.c.o[0m
+[19.131s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/map_interface/libmap_interface__rosidl_generator_py.so[0m
+[19.313s] [ 80%] Built target map_interface__rosidl_generator_py
+[19.406s] [ 83%] [32mBuilding C object CMakeFiles/map_interface__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/map_interface/_map_interface_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[19.408s] [ 87%] [32mBuilding C object CMakeFiles/map_interface__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/map_interface/_map_interface_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[19.411s] [ 90%] [32mBuilding C object CMakeFiles/map_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/map_interface/_map_interface_s.ep.rosidl_typesupport_c.c.o[0m
+[19.861s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/map_interface/map_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so[0m
+[19.878s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/map_interface/map_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so[0m
+[19.900s] [100%] [32m[1mLinking C shared library rosidl_generator_py/map_interface/map_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so[0m
+[20.043s] [100%] Built target map_interface__rosidl_typesupport_c__pyext
+[20.066s] [100%] Built target map_interface__rosidl_typesupport_introspection_c__pyext
+[20.104s] [100%] Built target map_interface__rosidl_typesupport_fastrtps_c__pyext
+[20.153s] Invoked command in '/home/robot1/ros2_ws/src/build/map_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake --build /home/robot1/ros2_ws/src/build/map_interface -- -j4 -l4
+[20.537s] Invoking command in '/home/robot1/ros2_ws/src/build/map_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake --install /home/robot1/ros2_ws/src/build/map_interface
+[20.570s] -- Install configuration: ""
+[20.571s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/ament_index/resource_index/rosidl_interfaces/map_interface
+[20.573s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.573s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.574s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/block.h
+[20.575s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.576s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__struct.h
+[20.577s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__functions.c
+[20.578s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__functions.h
+[20.579s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__type_support.h
+[20.580s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/rosidl_generator_c__visibility_control.h
+[20.582s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/library_path.sh
+[20.583s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/library_path.dsv
+[20.585s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_generator_c.so
+[20.587s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_generator_c.so" to ""
+[20.588s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.588s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.589s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.589s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__rosidl_typesupport_fastrtps_c.h
+[20.590s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[20.592s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_fastrtps_c.so
+[20.594s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_fastrtps_c.so" to ""
+[20.595s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.596s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.596s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[20.597s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.598s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__rosidl_typesupport_introspection_c.h
+[20.599s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__type_support.c
+[20.600s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_introspection_c.so
+[20.603s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_introspection_c.so" to ""
+[20.603s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_c.so
+[20.605s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_c.so" to ""
+[20.606s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.606s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.607s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.607s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__traits.hpp
+[20.608s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__builder.hpp
+[20.610s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__struct.hpp
+[20.611s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/block.hpp
+[20.612s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.613s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.614s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.615s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__rosidl_typesupport_fastrtps_cpp.hpp
+[20.616s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/dds_fastrtps
+[20.616s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[20.617s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_fastrtps_cpp.so
+[20.620s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_fastrtps_cpp.so" to ""
+[20.620s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface
+[20.621s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg
+[20.621s] -- Up-to-date: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail
+[20.622s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__rosidl_typesupport_introspection_cpp.hpp
+[20.622s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/include/map_interface/map_interface/msg/detail/block__type_support.cpp
+[20.624s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_introspection_cpp.so
+[20.626s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_introspection_cpp.so" to ""
+[20.627s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_cpp.so
+[20.629s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_typesupport_cpp.so" to ""
+[20.629s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/pythonpath.sh
+[20.630s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/pythonpath.dsv
+[20.632s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface-0.0.1-py3.10.egg-info
+[20.632s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface-0.0.1-py3.10.egg-info/dependency_links.txt
+[20.634s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface-0.0.1-py3.10.egg-info/SOURCES.txt
+[20.635s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface-0.0.1-py3.10.egg-info/top_level.txt
+[20.636s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface-0.0.1-py3.10.egg-info/PKG-INFO
+[20.637s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface
+[20.638s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/_map_interface_s.ep.rosidl_typesupport_introspection_c.c
+[20.639s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/_map_interface_s.ep.rosidl_typesupport_fastrtps_c.c
+[20.640s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg
+[20.641s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg/_block.py
+[20.642s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg/_block_s.c
+[20.643s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg/__init__.py
+[20.644s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[20.646s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[20.647s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/__init__.py
+[20.648s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/_map_interface_s.ep.rosidl_typesupport_c.c
+[20.649s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[20.650s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/libmap_interface__rosidl_generator_py.so
+[20.828s] Listing '/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface'...
+[20.829s] Compiling '/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/__init__.py'...
+[20.830s] Listing '/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg'...
+[20.832s] Compiling '/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg/__init__.py'...
+[20.833s] Compiling '/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/msg/_block.py'...
+[20.854s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[20.857s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""
+[20.858s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[20.861s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""
+[20.862s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[20.865s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/local/lib/python3.10/dist-packages/map_interface/map_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""
+[20.866s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_generator_py.so
+[20.868s] -- Set runtime path of "/home/robot1/ros2_ws/src/install/map_interface/lib/libmap_interface__rosidl_generator_py.so" to ""
+[20.869s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/msg/Block.idl
+[20.870s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/msg/Block.msg
+[20.872s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/ament_index/resource_index/package_run_dependencies/map_interface
+[20.873s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/ament_index/resource_index/parent_prefix_path/map_interface
+[20.875s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/ament_prefix_path.sh
+[20.876s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/ament_prefix_path.dsv
+[20.877s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/path.sh
+[20.878s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/environment/path.dsv
+[20.879s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/local_setup.bash
+[20.880s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/local_setup.sh
+[20.881s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/local_setup.zsh
+[20.882s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/local_setup.dsv
+[20.883s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/package.dsv
+[20.885s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/ament_index/resource_index/packages/map_interface
+[20.886s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_generator_cExport.cmake
+[20.888s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_generator_cExport-noconfig.cmake
+[20.889s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_typesupport_fastrtps_cExport.cmake
+[20.891s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[20.892s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_introspection_cExport.cmake
+[20.893s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[20.895s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_cExport.cmake
+[20.896s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_cExport-noconfig.cmake
+[20.897s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_generator_cppExport.cmake
+[20.899s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_typesupport_fastrtps_cppExport.cmake
+[20.900s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[20.902s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_introspection_cppExport.cmake
+[20.903s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[20.905s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_cppExport.cmake
+[20.906s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interface__rosidl_typesupport_cppExport-noconfig.cmake
+[20.907s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_generator_pyExport.cmake
+[20.908s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/export_map_interface__rosidl_generator_pyExport-noconfig.cmake
+[20.910s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/rosidl_cmake-extras.cmake
+[20.911s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/ament_cmake_export_include_directories-extras.cmake
+[20.912s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/ament_cmake_export_libraries-extras.cmake
+[20.913s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/ament_cmake_export_targets-extras.cmake
+[20.915s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[20.916s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/ament_cmake_export_dependencies-extras.cmake
+[20.918s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[20.919s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interfaceConfig.cmake
+[20.921s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/cmake/map_interfaceConfig-version.cmake
+[20.922s] -- Installing: /home/robot1/ros2_ws/src/install/map_interface/share/map_interface/package.xml
+[20.930s] Invoked command in '/home/robot1/ros2_ws/src/build/map_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble /usr/bin/cmake --install /home/robot1/ros2_ws/src/build/map_interface

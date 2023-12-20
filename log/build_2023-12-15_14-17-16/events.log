@@ -1,0 +1,105 @@
+[0.000000] (-) TimerEvent: {}
+[0.001742] (-) JobUnselected: {'identifier': 'map_interface'}
+[0.002448] (-) JobUnselected: {'identifier': 'map_updater'}
+[0.002789] (-) JobUnselected: {'identifier': 'map_viewer'}
+[0.002978] (-) JobUnselected: {'identifier': 'pwm_interface'}
+[0.003450] (-) JobUnselected: {'identifier': 'py_motor_raw_pwm'}
+[0.003714] (-) JobUnselected: {'identifier': 'py_ping'}
+[0.004465] (-) JobUnselected: {'identifier': 'robot_positions'}
+[0.004660] (-) JobUnselected: {'identifier': 'tkinter_serial_monitor'}
+[0.004867] (robot_pos_interface) JobQueued: {'identifier': 'robot_pos_interface', 'dependencies': OrderedDict()}
+[0.004981] (robot_pos_interface) JobStarted: {'identifier': 'robot_pos_interface'}
+[0.098832] (-) TimerEvent: {}
+[0.200073] (-) TimerEvent: {}
+[0.303289] (-) TimerEvent: {}
+[0.400768] (robot_pos_interface) JobProgress: {'identifier': 'robot_pos_interface', 'progress': 'cmake'}
+[0.402065] (robot_pos_interface) Command: {'cmd': ['/usr/bin/cmake', '/home/robot1/ros2_ws/src/robot_pos_interface', '-DCMAKE_INSTALL_PREFIX=/home/robot1/ros2_ws/src/install/robot_pos_interface'], 'cwd': '/home/robot1/ros2_ws/src/build/robot_pos_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot1'), ('SSH_CLIENT', '10.2.13.62 49004 22'), ('LC_TIME', 'es_AR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/robot1/ros2_ws/install/pwm_interface/lib:/home/robot1/ros2_ws/install/object_positions/lib:/home/robot1/ros2_ws/install/map_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot1'), ('OLDPWD', '/home/robot1/ros2_ws/src/robot_pos_interface'), ('SSH_TTY', '/dev/pts/2'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'es_AR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/robot1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'robot1'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '15'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/robot1/.local/bin:/home/robot1/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'es_AR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'es_AR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/object_positions:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/map_interface:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'es_AR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'es_AR.UTF-8'), ('LC_IDENTIFICATION', 'es_AR.UTF-8'), ('PWD', '/home/robot1/ros2_ws/src/build/robot_pos_interface'), ('SSH_CONNECTION', '10.2.13.62 49004 10.2.13.110 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/robot1/ros2_ws/install/tkinter_serial_monitor/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/py_ping/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/position_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/object_positions/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/map_viewer/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'es_AR.UTF-8'), ('LC_PAPER', 'es_AR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/object_positions:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/position_updater:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/opt/ros/humble')]), 'shell': False}
+[0.406566] (-) TimerEvent: {}
+[0.507894] (-) TimerEvent: {}
+[0.609169] (-) TimerEvent: {}
+[0.676538] (robot_pos_interface) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.709364] (-) TimerEvent: {}
+[0.810087] (-) TimerEvent: {}
+[0.911146] (-) TimerEvent: {}
+[0.947477] (robot_pos_interface) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.977278] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.011284] (-) TimerEvent: {}
+[1.111996] (-) TimerEvent: {}
+[1.212745] (-) TimerEvent: {}
+[1.313414] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.313945] (-) TimerEvent: {}
+[1.338532] (robot_pos_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.339531] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.341036] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.353656] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.414178] (-) TimerEvent: {}
+[1.515391] (-) TimerEvent: {}
+[1.616538] (-) TimerEvent: {}
+[1.707683] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.716698] (-) TimerEvent: {}
+[1.743368] (robot_pos_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.744785] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.745222] (robot_pos_interface) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.777149] (robot_pos_interface) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.816895] (-) TimerEvent: {}
+[1.917624] (-) TimerEvent: {}
+[2.018479] (-) TimerEvent: {}
+[2.120124] (-) TimerEvent: {}
+[2.221876] (-) TimerEvent: {}
+[2.322691] (-) TimerEvent: {}
+[2.423448] (-) TimerEvent: {}
+[2.524393] (-) TimerEvent: {}
+[2.625731] (-) TimerEvent: {}
+[2.726419] (-) TimerEvent: {}
+[2.827419] (-) TimerEvent: {}
+[2.845680] (robot_pos_interface) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[2.927613] (-) TimerEvent: {}
+[3.028358] (-) TimerEvent: {}
+[3.129036] (-) TimerEvent: {}
+[3.229911] (-) TimerEvent: {}
+[3.330719] (-) TimerEvent: {}
+[3.431534] (-) TimerEvent: {}
+[3.532314] (-) TimerEvent: {}
+[3.581878] (robot_pos_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[3.626893] (robot_pos_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.632489] (-) TimerEvent: {}
+[3.727250] (robot_pos_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[3.732658] (-) TimerEvent: {}
+[3.833387] (-) TimerEvent: {}
+[3.934670] (-) TimerEvent: {}
+[4.035444] (-) TimerEvent: {}
+[4.136164] (-) TimerEvent: {}
+[4.236925] (-) TimerEvent: {}
+[4.279946] (robot_pos_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.337118] (-) TimerEvent: {}
+[4.438164] (-) TimerEvent: {}
+[4.538839] (-) TimerEvent: {}
+[4.627714] (robot_pos_interface) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.639053] (-) TimerEvent: {}
+[4.739845] (-) TimerEvent: {}
+[4.841265] (-) TimerEvent: {}
+[4.942595] (-) TimerEvent: {}
+[5.043584] (-) TimerEvent: {}
+[5.144278] (-) TimerEvent: {}
+[5.245026] (-) TimerEvent: {}
+[5.345964] (-) TimerEvent: {}
+[5.446816] (-) TimerEvent: {}
+[5.547508] (-) TimerEvent: {}
+[5.648414] (-) TimerEvent: {}
+[5.749103] (-) TimerEvent: {}
+[5.809357] (robot_pos_interface) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:229 (message):\n'}
+[5.810109] (robot_pos_interface) StderrLine: {'line': b'  Packages installing interfaces must include\n'}
+[5.810971] (robot_pos_interface) StderrLine: {'line': b"  '<member_of_group>rosidl_interface_packages</member_of_group>' in their\n"}
+[5.811593] (robot_pos_interface) StderrLine: {'line': b'  package.xml\n'}
+[5.812076] (robot_pos_interface) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[5.812597] (robot_pos_interface) StderrLine: {'line': b'  CMakeLists.txt:27 (rosidl_generate_interfaces)\n'}
+[5.813142] (robot_pos_interface) StderrLine: {'line': b'\n'}
+[5.813662] (robot_pos_interface) StderrLine: {'line': b'\x1b[0m\n'}
+[5.814128] (robot_pos_interface) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[5.814658] (robot_pos_interface) StdoutLine: {'line': b'See also "/home/robot1/ros2_ws/src/build/robot_pos_interface/CMakeFiles/CMakeOutput.log".\n'}
+[5.842508] (robot_pos_interface) CommandEnded: {'returncode': 1}
+[5.849495] (-) TimerEvent: {}
+[5.950294] (-) TimerEvent: {}
+[6.052079] (-) TimerEvent: {}
+[6.105370] (robot_pos_interface) JobEnded: {'identifier': 'robot_pos_interface', 'rc': 1}
+[6.117431] (-) EventReactorShutdown: {}

@@ -1,0 +1,6 @@
+{
+  "package_name": "robot_pos_interface",
+  "non_idl_tuples": [
+    "/home/robot1/ros2_ws/src/robot_pos_interface:msg/RobotPosition.msg"
+  ]
+}

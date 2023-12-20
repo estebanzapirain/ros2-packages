@@ -1,0 +1,27 @@
+[3.620s] Invoking command in '/home/robot1/ros2_ws/src/robot_positions': AMENT_PREFIX_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/robot1/ros2_ws/src/build/robot_positions/prefix_override:/home/robot1/ros2_ws/src/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/src/install/robot_pos_interface/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/robot_positions build --build-base /home/robot1/ros2_ws/src/build/robot_positions/build install --record /home/robot1/ros2_ws/src/build/robot_positions/install.log --single-version-externally-managed
+[4.815s] running egg_info
+[4.817s] creating ../build/robot_positions/robot_positions.egg-info
+[4.818s] writing ../build/robot_positions/robot_positions.egg-info/PKG-INFO
+[4.819s] writing dependency_links to ../build/robot_positions/robot_positions.egg-info/dependency_links.txt
+[4.820s] writing entry points to ../build/robot_positions/robot_positions.egg-info/entry_points.txt
+[4.821s] writing requirements to ../build/robot_positions/robot_positions.egg-info/requires.txt
+[4.822s] writing top-level names to ../build/robot_positions/robot_positions.egg-info/top_level.txt
+[4.823s] writing manifest file '../build/robot_positions/robot_positions.egg-info/SOURCES.txt'
+[4.826s] reading manifest file '../build/robot_positions/robot_positions.egg-info/SOURCES.txt'
+[4.831s] writing manifest file '../build/robot_positions/robot_positions.egg-info/SOURCES.txt'
+[4.832s] running build
+[4.832s] running install
+[4.833s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[4.834s]   warnings.warn(
+[4.834s] running install_data
+[4.837s] creating /home/robot1/ros2_ws/src/install/robot_positions/share/ament_index
+[4.838s] creating /home/robot1/ros2_ws/src/install/robot_positions/share/ament_index/resource_index
+[4.839s] creating /home/robot1/ros2_ws/src/install/robot_positions/share/ament_index/resource_index/packages
+[4.839s] copying resource/robot_positions -> /home/robot1/ros2_ws/src/install/robot_positions/share/ament_index/resource_index/packages
+[4.840s] copying package.xml -> /home/robot1/ros2_ws/src/install/robot_positions/share/robot_positions
+[4.840s] running install_egg_info
+[4.850s] Copying ../build/robot_positions/robot_positions.egg-info to /home/robot1/ros2_ws/src/install/robot_positions/lib/python3.10/site-packages/robot_positions-0.0.1-py3.10.egg-info
+[4.857s] running install_scripts
+[4.941s] Installing robot_pos_updater script to /home/robot1/ros2_ws/src/install/robot_positions/lib/robot_positions
+[4.941s] writing list of installed files to '/home/robot1/ros2_ws/src/build/robot_positions/install.log'
+[5.058s] Invoked command in '/home/robot1/ros2_ws/src/robot_positions' returned '0': AMENT_PREFIX_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/robot1/ros2_ws/src/install/robot_pos_interface/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/robot1/ros2_ws/src/build/robot_positions/prefix_override:/home/robot1/ros2_ws/src/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/src/install/robot_pos_interface/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/robot_positions build --build-base /home/robot1/ros2_ws/src/build/robot_positions/build install --record /home/robot1/ros2_ws/src/build/robot_positions/install.log --single-version-externally-managed

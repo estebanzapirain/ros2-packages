@@ -33,7 +33,7 @@ class MapSubscriber(Node):
 
     def listener_callback(self, msg):
         global frame
-        if msg.frame > frame:
+        if msg.frame != frame:
             canvas_1.delete('all') #clear canvas
             frame = msg.frame
             

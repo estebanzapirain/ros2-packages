@@ -1,0 +1,3 @@
+[console_scripts]
+robot_pos_updater = robot_positions.pos_updater:main
+
