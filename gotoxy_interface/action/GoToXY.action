@@ -1,0 +1,11 @@
+# Request
+uint16 goal_x
+uint8 goal_y
+---
+# Result
+uint16 final_x
+uint8 final_y
+---
+# Feedback
+uint16 partial_x
+uint8 partial_y

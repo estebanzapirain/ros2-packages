@@ -32,6 +32,9 @@ arduino.reset_input_buffer()
 BLOCK_LENGTH = 6
 BLOCKS_EXPECTED = 4
 
+#Minimum block size to assume data is valid
+MIN_SIZE = 0
+
 #frame number
 frame = 0
 
@@ -100,8 +103,9 @@ class Publisher(Node):
                     #-----------------------------------------------------------
                     
                     #Publish
-                    print(msg.frame, msg.sig, msg.x, msg.y, msg.width, msg.height)
-                    self.publisher_.publish(msg)
+                    #print(msg.frame, msg.sig, msg.x, msg.y, msg.width, msg.height)
+                    if (msg.width>MIN_SIZE) & (msg.height>MIN_SIZE): 
+                        self.publisher_.publish(msg)
                     # self.get_logger().info('Block: "%s"' % block)
 
 

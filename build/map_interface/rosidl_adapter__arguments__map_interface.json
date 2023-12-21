@@ -1,6 +1,0 @@
-{
-  "package_name": "map_interface",
-  "non_idl_tuples": [
-    "/home/robot1/ros2_ws/src/map_interface:msg/Block.msg"
-  ]
-}

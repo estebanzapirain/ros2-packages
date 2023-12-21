@@ -1,6 +1,0 @@
-setup.py
-robot_pos_interface/__init__.py
-robot_pos_interface.egg-info/PKG-INFO
-robot_pos_interface.egg-info/SOURCES.txt
-robot_pos_interface.egg-info/dependency_links.txt
-robot_pos_interface.egg-info/top_level.txt

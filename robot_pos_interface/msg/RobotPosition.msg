@@ -1,5 +1,5 @@
-int64 frame
-int64 robot_id
-int32 x
-int32 y
-int32 angle
+uint64 frame
+uint8 robot_id
+uint16 x
+uint8 y
+int16 angle

@@ -113,9 +113,9 @@ class Publisher(Node):
             msg.frame = msg1.frame
             
         #Publish
-        print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
+        #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
         self.publisher_.publish(msg)
-#        self.get_logger().info('Robot: "%s"' % msg)
+        self.get_logger().info('Robot: "%s"' % msg)
 
 
 def main(args=None):

@@ -1,6 +1,6 @@
-int64 frame
-int64 sig
-int64 x
-int64 y
-int64 width
-int64 height
+uint64 frame
+uint8 sig
+uint16 x
+uint8 y
+uint8 width
+uint8 height

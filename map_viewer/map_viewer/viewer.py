@@ -37,12 +37,12 @@ class MapSubscriber(Node):
             canvas_1.delete('all') #clear canvas
             frame = msg.frame
             
-        self.get_logger().info('frame= "%d"' % msg.frame)        
-        self.get_logger().info('sig= "%d"' % msg.sig)
-        self.get_logger().info('x= "%d"' % msg.x)
-        self.get_logger().info('y= "%d"' % msg.y)
-        self.get_logger().info('width= "%d"' % msg.width)
-        self.get_logger().info('height= "%d"' % msg.height)
+        #self.get_logger().info('frame= "%d"' % msg.frame)        
+        #self.get_logger().info('sig= "%d"' % msg.sig)
+#         self.get_logger().info('x= "%d"' % msg.x)
+#         self.get_logger().info('y= "%d"' % msg.y)
+#         self.get_logger().info('width= "%d"' % msg.width)
+#         self.get_logger().info('height= "%d"' % msg.height)
 
         #get color fron signature
         if msg.sig == 1:
