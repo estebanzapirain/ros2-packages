@@ -29,10 +29,11 @@ class GoToXYClient(Node):
         super().__init__('gotoxy_client')
         self._action_client = ActionClient(self, GoToXY, 'gotoxy')
 
-    def send_goal(self, x, y):
+    def send_goal(self, x, y, angle):
         goal_msg = GoToXY.Goal()
         goal_msg.goal_x = x
         goal_msg.goal_y = y
+        goal_msg.angle = angle
 
         self._action_client.wait_for_server()
 
@@ -69,8 +70,12 @@ def main(args=None):
     rclpy.init(args=args)
 
     action_client = GoToXYClient()
-
-    action_client.send_goal(int(sys.argv[1]), int(sys.argv[2]))
+    
+    goal_x = int(sys.argv[1])
+    goal_y = int(sys.argv[2])
+    goal_angle = int(sys.argv[3])
+    
+    action_client.send_goal(goal_x, goal_y, goal_angle)
 
     rclpy.spin(action_client)
 

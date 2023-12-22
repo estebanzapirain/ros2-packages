@@ -21,6 +21,9 @@ import threading
 from map_interface.msg import Block
 from robot_pos_interface.msg import RobotPosition
 
+#Conversión de radianes a grados
+RAD2GRAD = np.pi/180
+
 #frames per second
 fps = 2
 
@@ -72,24 +75,25 @@ class Publisher(Node):
         yc = int((y1 + y2)/2)
         return xc,yc
 
+    #retorna ángulo en grados
     def getAngle(self,dx,dy):
         if (dx!=0):
-            angle = np.arctan(dy/dx)
+            angle = np.arctan(dy/dx) * RAD2GRAD
         elif (dy<0):
-            angle = np.pi * 1.5
+            angle = 270
         else:
-            angle = np.pi * 0.5
+            angle = 90
 
         if (dx<0): #segundo/tercer cuadrante
-            angle = angle + np.pi
+            angle = angle + 180
         elif (dx>0) & (dy<0): #cuarto cuadrante
-            angle = angle + 2*np.pi
+            angle = angle + 360
         elif (dy == 0):
             if dx>0:
                 angle = 0
             else:
-                angle = np.pi
-        return int(angle * 180 / np.pi)
+                angle = 180
+        return int(angle)
 
     def timer_callback(self):
         global msg1, msg2, new_data

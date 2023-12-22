@@ -65,6 +65,10 @@ class MapSubscriber(Node):
         yc = scale * (msg.y + msg.height / 2)
         center = canvas_1.create_oval(xc - 1, yc - 1, xc + 1, yc + 1)
 
+        #labels
+        widget = tk.Label(canvas_1, text='(0,0)', fg='black')
+        widget.pack()
+        canvas_1.create_window(0, 0, window=widget)  
     # UPDATE CANVAS
         window.update()
 
