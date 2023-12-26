@@ -23,10 +23,17 @@ fps = 2
 ANGLE_TOLERANCE = 20
 
 #Velocidad de giro
-TURN_SPEED = 55
+TURN_SPEED = 80
+
+#Duración del pulso de giro
+TURN_PULSE_MS = 100
 
 #Conversión de radianes a grados
-RAD2GRAD = np.pi/180
+RAD2GRAD = 180/np.pi
+
+#Punto medio
+XM = 160
+YM = 120
 
 #Variables
 pos1 = RobotPosition() #robot 1 position: frame, robot_id, x, y, angle
@@ -84,6 +91,7 @@ class GoToXYActionServer(Node):
     
     #retorna ángulo en grados
     def getAngle(self,dx,dy):
+        dy = -dy        
         if (dx!=0):
             angle = np.arctan(dy/dx) * RAD2GRAD
         elif (dy<0):
@@ -104,7 +112,8 @@ class GoToXYActionServer(Node):
     
     def execute_callback(self, goal_handle):
         
-       
+        global ANGLE_TOLERANCE, TURN_PULSE_MS
+        
         #Empieza a procesar la meta
         self.get_logger().info('Executing goal...')
         feedback_msg = GoToXY.Feedback()
@@ -120,42 +129,51 @@ class GoToXYActionServer(Node):
         feedback_msg.partial_angle = pos1.angle        
         
         #calcular la direccion a la que se tiene que mover direccion = arctan((goal_y-y)/(goal_x-x))
-        dx = goal_handle.request.goal_x - pos1.x
-        dy = goal_handle.request.goal_y - pos1.y
-        togoal_angle = self.getAngle(dx, dy)
-        self.get_logger().info('Angle difference: {0}'.format(togoal_angle))
-        angle_difference = abs(pos1.angle-togoal_angle)
+        dx = goal_handle.request.goal_x - XM
+        dy = goal_handle.request.goal_y - YM
+                
+        goal_angle = self.getAngle(dx, dy)
+        angle_difference = abs(pos1.angle-goal_angle)
         pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
         
         # 1- girar hasta que el angulo coincida con la direccion
         while pointing_at_goal == False:
            
-            #el angulo aumenta en sentido horario. Si es mayor, girar a la izquierda
-            if pos1.angle < togoal_angle:
+            # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
+            if goal_angle < pos1.angle:
                 response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED) #id, vel_izq, vel_der
+            # Sino, girar a la izquierda    
             else:
                 response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED) #id, vel_izq, vel_der
-
-            #Actualizar ángulo
-            dx = goal_handle.request.goal_x - pos1.x
-            dy = goal_handle.request.goal_y - pos1.y
-            togoal_angle = self.getAngle(dx, dy)
-            #angle_difference = abs(pos1.angle-togoal_angle)
-            angle_difference = abs(togoal_angle)
             
+            # El pulso de giro es menor que el total, para que no se pase de largo. Girar durante un tiempo, y frenar
+            time.sleep(TURN_PULSE_MS/1000)
+            response = self.set_speeds_client.send_request(2, 0, 0)
+            
+            #Actualizar ángulo
+            angle_difference = abs(pos1.angle - goal_angle)
+
             #Publicar ángulo
             feedback_msg.partial_angle = angle_difference
             self.get_logger().info('Robot Angle: {0}'.format(pos1.angle))
-            self.get_logger().info('Goal Angle: {0}'.format(togoal_angle))
+            self.get_logger().info('Goal Angle: {0}'.format(goal_angle))
             self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
             goal_handle.publish_feedback(feedback_msg)
             
-
+            #Chequear si está apuntando en la dirección correcta
             pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
             
-            time.sleep(1/fps)
+            #Hacer un ajuste más fino
+            if pointing_at_goal & (ANGLE_TOLERANCE > 5):
+                TURN_PULSE_MS = TURN_PULSE_MS / 2
+                ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
+                pointing_at_goal = False         
+            
+            #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
+            time.sleep(1/fps - TURN_PULSE_MS/1000)
 
-        response = self.set_speeds_client.send_request(2, 0, 0) #frenar      
+#        response = self.set_speeds_client.send_request(2, 0, 0) #frenar   
+           
         # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)
         
         # 3- girar el angulo hasta que coincida con el goal_angle

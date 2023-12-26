@@ -63,7 +63,7 @@ class GoToXYClient(Node):
 
     def feedback_callback(self, feedback_msg):
         feedback = feedback_msg.feedback
-        self.get_logger().info('Received feedback: {0}'.format(feedback.partial_x))
+        self.get_logger().info('Received feedback: {0}'.format(feedback.partial_angle))
 
 
 def main(args=None):

@@ -22,7 +22,7 @@ from map_interface.msg import Block
 from robot_pos_interface.msg import RobotPosition
 
 #Conversión de radianes a grados
-RAD2GRAD = np.pi/180
+RAD2GRAD = 180/np.pi
 
 #frames per second
 fps = 2
@@ -77,6 +77,7 @@ class Publisher(Node):
 
     #retorna ángulo en grados
     def getAngle(self,dx,dy):
+        dx = -dx
         if (dx!=0):
             angle = np.arctan(dy/dx) * RAD2GRAD
         elif (dy<0):
@@ -112,14 +113,17 @@ class Publisher(Node):
             dx = msg2.x - msg1.x
             dy = msg2.y - msg1.y
             msg.angle = self.getAngle(dx, dy)
-            
+            self.get_logger().info('dx: {0}'.format(dx))
+            self.get_logger().info('dy: {0}'.format(dy))
+            self.get_logger().info('angle: {0}'.format(msg.angle))
             msg.robot_id = 1
             msg.frame = msg1.frame
-            
-        #Publish
-        #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
-        self.publisher_.publish(msg)
-        self.get_logger().info('Robot: "%s"' % msg)
+		    
+	    #Publish
+	    #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
+            self.publisher_.publish(msg)
+	
+            self.get_logger().info('Robot: "%s"' % msg)
 
 
 def main(args=None):
