@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: py-motor-raw-pwm
+Version: 0.0.0
+Summary: Arduino ROS BridgeMotor raw PWM Control Client-Service package
+Home-page: UNKNOWN
+Maintainer: robot1
+Maintainer-email: estebanzapirain@gmail.com
+License: Apache 2.0
+Platform: UNKNOWN
+
+UNKNOWN
+

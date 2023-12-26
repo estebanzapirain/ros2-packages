@@ -133,12 +133,24 @@ if (coincide==true) //clave
 
         convertir_a_string();
         mensaje=mensaje.substring(0,mensaje.length());
-        //Serial.println(mensaje); // era Serial.print(mensaje);
+        
+        //Formato del mensaje: 
+        //comando arg1 arg2
+        //separo por espacios, quedándome con el resto
+
+        //Comando
         cmd = mensaje[0];
-        String argv1_str = mensaje.substring(2,5);
-        String argv2_str = mensaje.substring(6,9);
+
+        //Argumento 1
+        mensaje = mensaje.substring(2,mensaje.length());
+        String argv1_str = mensaje.substring(0,mensaje.indexOf(' '));
+
+        //Argumento 2
+        String argv2_str = mensaje.substring(mensaje.indexOf(' ') + 1,mensaje.length());
+       
         argv1_str.toCharArray(argv1, 16);
         argv2_str.toCharArray(argv2, 16);
+        
         Serial.print("cmd= ");
         Serial.println(cmd);
         Serial.print("arg1= ");
@@ -680,4 +692,3 @@ bool decodificar_comandos_radio(void)
   
   return(b);
 }
-

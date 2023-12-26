@@ -1,0 +1,92 @@
+[0.000000] (-) TimerEvent: {}
+[0.001486] (-) JobUnselected: {'identifier': 'gotoxy'}
+[0.001608] (-) JobUnselected: {'identifier': 'gotoxy_interface'}
+[0.002198] (-) JobUnselected: {'identifier': 'map_interface'}
+[0.002466] (-) JobUnselected: {'identifier': 'map_updater'}
+[0.002623] (-) JobUnselected: {'identifier': 'map_viewer'}
+[0.002934] (-) JobUnselected: {'identifier': 'pwm_interface'}
+[0.003026] (-) JobUnselected: {'identifier': 'py_ping'}
+[0.003101] (-) JobUnselected: {'identifier': 'robot_pos_interface'}
+[0.003188] (-) JobUnselected: {'identifier': 'robot_positions'}
+[0.003262] (-) JobUnselected: {'identifier': 'tkinter_serial_monitor'}
+[0.003343] (py_motor_raw_pwm) JobQueued: {'identifier': 'py_motor_raw_pwm', 'dependencies': OrderedDict([('pwm_interface', '/home/robot1/ros2_ws/src/install/pwm_interface')])}
+[0.003559] (py_motor_raw_pwm) JobStarted: {'identifier': 'py_motor_raw_pwm'}
+[0.099028] (-) TimerEvent: {}
+[0.199640] (-) TimerEvent: {}
+[0.300483] (-) TimerEvent: {}
+[0.401438] (-) TimerEvent: {}
+[0.502182] (-) TimerEvent: {}
+[0.602799] (-) TimerEvent: {}
+[0.703400] (-) TimerEvent: {}
+[0.804116] (-) TimerEvent: {}
+[0.904921] (-) TimerEvent: {}
+[1.005515] (-) TimerEvent: {}
+[1.106147] (-) TimerEvent: {}
+[1.206740] (-) TimerEvent: {}
+[1.307334] (-) TimerEvent: {}
+[1.407966] (-) TimerEvent: {}
+[1.508705] (-) TimerEvent: {}
+[1.609470] (-) TimerEvent: {}
+[1.710932] (-) TimerEvent: {}
+[1.812084] (-) TimerEvent: {}
+[1.913340] (-) TimerEvent: {}
+[2.014462] (-) TimerEvent: {}
+[2.115573] (-) TimerEvent: {}
+[2.216237] (-) TimerEvent: {}
+[2.317000] (-) TimerEvent: {}
+[2.417757] (-) TimerEvent: {}
+[2.518438] (-) TimerEvent: {}
+[2.619045] (-) TimerEvent: {}
+[2.719634] (-) TimerEvent: {}
+[2.820207] (-) TimerEvent: {}
+[2.920816] (-) TimerEvent: {}
+[3.021416] (-) TimerEvent: {}
+[3.122017] (-) TimerEvent: {}
+[3.222636] (-) TimerEvent: {}
+[3.323227] (-) TimerEvent: {}
+[3.424017] (-) TimerEvent: {}
+[3.503591] (py_motor_raw_pwm) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/py_motor_raw_pwm', 'build', '--build-base', '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build', 'install', '--record', '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log', '--single-version-externally-managed'], 'cwd': '/home/robot1/ros2_ws/src/py_motor_raw_pwm', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'robot1', 'SSH_CLIENT': '10.2.13.62 55470 22', 'LC_TIME': 'es_AR.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/robot1/ros2_ws/src/install/pwm_interface/lib:/home/robot1/ros2_ws/install/robot_pos_interface/lib:/home/robot1/ros2_ws/install/pwm_interface/lib:/home/robot1/ros2_ws/install/map_interface/lib:/home/robot1/ros2_ws/install/gotoxy_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/robot1', 'OLDPWD': '/home/robot1/ros2_ws', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'es_AR.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/robot1/ros2_ws/src/install:/home/robot1/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'robot1', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '7', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/home/robot1/.local/bin:/home/robot1/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'LC_ADDRESS': 'es_AR.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': 'localhost:11.0', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'es_AR.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/home/robot1/ros2_ws/src/install/py_motor_raw_pwm:/home/robot1/ros2_ws/src/install/pwm_interface:/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy:/home/robot1/ros2_ws/install/gotoxy_interface:/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'es_AR.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'es_AR.UTF-8', 'LC_IDENTIFICATION': 'es_AR.UTF-8', 'PWD': '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm', 'SSH_CONNECTION': '10.2.13.62 55470 10.2.13.110 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/prefix_override:/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/tkinter_serial_monitor/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_pos_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/py_ping/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/map_viewer/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/gotoxy/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/gotoxy_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'es_AR.UTF-8', 'LC_PAPER': 'es_AR.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/robot1/ros2_ws/src/install/pwm_interface:/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy_interface'}, 'shell': False}
+[3.524286] (-) TimerEvent: {}
+[3.625001] (-) TimerEvent: {}
+[3.725627] (-) TimerEvent: {}
+[3.826297] (-) TimerEvent: {}
+[3.926881] (-) TimerEvent: {}
+[4.027498] (-) TimerEvent: {}
+[4.128109] (-) TimerEvent: {}
+[4.228720] (-) TimerEvent: {}
+[4.329329] (-) TimerEvent: {}
+[4.429948] (-) TimerEvent: {}
+[4.530547] (-) TimerEvent: {}
+[4.624213] (py_motor_raw_pwm) StdoutLine: {'line': b'running egg_info\n'}
+[4.627105] (py_motor_raw_pwm) StdoutLine: {'line': b'writing ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/PKG-INFO\n'}
+[4.628971] (py_motor_raw_pwm) StdoutLine: {'line': b'writing dependency_links to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/dependency_links.txt\n'}
+[4.629957] (py_motor_raw_pwm) StdoutLine: {'line': b'writing entry points to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/entry_points.txt\n'}
+[4.630539] (-) TimerEvent: {}
+[4.631097] (py_motor_raw_pwm) StdoutLine: {'line': b'writing requirements to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/requires.txt\n'}
+[4.631702] (py_motor_raw_pwm) StdoutLine: {'line': b'writing top-level names to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/top_level.txt\n'}
+[4.638978] (py_motor_raw_pwm) StdoutLine: {'line': b"reading manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'\n"}
+[4.642722] (py_motor_raw_pwm) StdoutLine: {'line': b"writing manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'\n"}
+[4.643348] (py_motor_raw_pwm) StdoutLine: {'line': b'running build\n'}
+[4.643721] (py_motor_raw_pwm) StdoutLine: {'line': b'running build_py\n'}
+[4.644456] (py_motor_raw_pwm) StdoutLine: {'line': b'copying py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm\n'}
+[4.646096] (py_motor_raw_pwm) StdoutLine: {'line': b'running install\n'}
+[4.646737] (py_motor_raw_pwm) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[4.647228] (py_motor_raw_pwm) StderrLine: {'line': b'  warnings.warn(\n'}
+[4.647899] (py_motor_raw_pwm) StdoutLine: {'line': b'running install_lib\n'}
+[4.651292] (py_motor_raw_pwm) StdoutLine: {'line': b'copying /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm\n'}
+[4.654659] (py_motor_raw_pwm) StdoutLine: {'line': b'byte-compiling /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm/service_member_function.py to service_member_function.cpython-310.pyc\n'}
+[4.657419] (py_motor_raw_pwm) StdoutLine: {'line': b'running install_data\n'}
+[4.659963] (py_motor_raw_pwm) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.666789] (py_motor_raw_pwm) StdoutLine: {'line': b"removing '/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[4.668413] (py_motor_raw_pwm) StdoutLine: {'line': b'Copying ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm-0.0.0-py3.10.egg-info\n'}
+[4.673535] (py_motor_raw_pwm) StdoutLine: {'line': b'running install_scripts\n'}
+[4.730704] (-) TimerEvent: {}
+[4.756502] (py_motor_raw_pwm) StdoutLine: {'line': b'Installing SetSpeed script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm\n'}
+[4.757332] (py_motor_raw_pwm) StdoutLine: {'line': b'Installing SpeedSetter script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm\n'}
+[4.759075] (py_motor_raw_pwm) StdoutLine: {'line': b"writing list of installed files to '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log'\n"}
+[4.830993] (-) TimerEvent: {}
+[4.870755] (py_motor_raw_pwm) CommandEnded: {'returncode': 0}
+[4.931112] (-) TimerEvent: {}
+[5.032217] (-) TimerEvent: {}
+[5.110943] (py_motor_raw_pwm) JobEnded: {'identifier': 'py_motor_raw_pwm', 'rc': 0}
+[5.113892] (-) EventReactorShutdown: {}

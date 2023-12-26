@@ -20,10 +20,10 @@ from pwm_interface.srv import SetSpeeds
 fps = 2
 
 #Tolerance for angles (degrees)
-ANGLE_TOLERANCE = 2
+ANGLE_TOLERANCE = 20
 
 #Velocidad de giro
-TURN_SPEED = 100
+TURN_SPEED = 55
 
 #Conversión de radianes a grados
 RAD2GRAD = np.pi/180
@@ -131,17 +131,26 @@ class GoToXYActionServer(Node):
         while pointing_at_goal == False:
            
             #el angulo aumenta en sentido horario. Si es mayor, girar a la izquierda
-            if pos1.angle > togoal_angle:
-                response = self.set_speeds_client.send_request(2, 0, TURN_SPEED) #id, vel_izq, vel_der
+            if pos1.angle < togoal_angle:
+                response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED) #id, vel_izq, vel_der
             else:
-                response = self.set_speeds_client.send_request(2, TURN_SPEED, 0) #id, vel_izq, vel_der
+                response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED) #id, vel_izq, vel_der
+
+            #Actualizar ángulo
+            dx = goal_handle.request.goal_x - pos1.x
+            dy = goal_handle.request.goal_y - pos1.y
+            togoal_angle = self.getAngle(dx, dy)
+            #angle_difference = abs(pos1.angle-togoal_angle)
+            angle_difference = abs(togoal_angle)
             
             #Publicar ángulo
             feedback_msg.partial_angle = angle_difference
-            self.get_logger().info('Feedback: {0}'.format(feedback_msg.partial_angle))
+            self.get_logger().info('Robot Angle: {0}'.format(pos1.angle))
+            self.get_logger().info('Goal Angle: {0}'.format(togoal_angle))
+            self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
             goal_handle.publish_feedback(feedback_msg)
             
-            angle_difference = abs(pos1.angle-togoal_angle)
+
             pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
             
             time.sleep(1/fps)

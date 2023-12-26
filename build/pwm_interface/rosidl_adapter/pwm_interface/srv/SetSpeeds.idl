@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from pwm_interface/srv/SetSpeeds.srv
+// generated code does not contain a copyright notice
+
+
+module pwm_interface {
+  module srv {
+    struct SetSpeeds_Request {
+      uint8 id;
+
+      uint8 left;
+
+      uint8 right;
+    };
+    struct SetSpeeds_Response {
+      int8 ok;
+    };
+  };
+};

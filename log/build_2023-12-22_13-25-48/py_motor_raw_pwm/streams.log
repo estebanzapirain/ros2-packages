@@ -1,0 +1,27 @@
+[3.493s] Invoking command in '/home/robot1/ros2_ws/src/py_motor_raw_pwm': PYTHONPATH=/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/prefix_override:/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/py_motor_raw_pwm build --build-base /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build install --record /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log --single-version-externally-managed
+[4.606s] running egg_info
+[4.609s] writing ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/PKG-INFO
+[4.611s] writing dependency_links to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/dependency_links.txt
+[4.612s] writing entry points to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/entry_points.txt
+[4.613s] writing requirements to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/requires.txt
+[4.613s] writing top-level names to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/top_level.txt
+[4.621s] reading manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'
+[4.625s] writing manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'
+[4.626s] running build
+[4.626s] running build_py
+[4.627s] copying py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm
+[4.628s] running install
+[4.629s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[4.630s]   warnings.warn(
+[4.630s] running install_lib
+[4.633s] copying /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm
+[4.637s] byte-compiling /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm/service_member_function.py to service_member_function.cpython-310.pyc
+[4.640s] running install_data
+[4.642s] running install_egg_info
+[4.649s] removing '/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm-0.0.0-py3.10.egg-info' (and everything under it)
+[4.651s] Copying ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm-0.0.0-py3.10.egg-info
+[4.656s] running install_scripts
+[4.740s] Installing SetSpeed script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm
+[4.740s] Installing SpeedSetter script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm
+[4.742s] writing list of installed files to '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log'
+[4.855s] Invoked command in '/home/robot1/ros2_ws/src/py_motor_raw_pwm' returned '0': PYTHONPATH=/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/prefix_override:/home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/py_motor_raw_pwm build --build-base /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build install --record /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log --single-version-externally-managed

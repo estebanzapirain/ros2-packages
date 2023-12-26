@@ -1,0 +1,41 @@
+running egg_info
+creating ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info
+writing ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/PKG-INFO
+writing dependency_links to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/dependency_links.txt
+writing entry points to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/entry_points.txt
+writing requirements to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/requires.txt
+writing top-level names to ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/top_level.txt
+writing manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'
+reading manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'
+writing manifest file '../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build
+creating /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib
+creating /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm
+copying py_motor_raw_pwm/__init__.py -> /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm
+copying py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm
+copying py_motor_raw_pwm/client_member_function.py -> /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm
+copying /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm/__init__.py -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm
+copying /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm/service_member_function.py -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm
+copying /home/robot1/ros2_ws/src/build/py_motor_raw_pwm/build/lib/py_motor_raw_pwm/client_member_function.py -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm
+byte-compiling /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm/service_member_function.py to service_member_function.cpython-310.pyc
+byte-compiling /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm/client_member_function.py to client_member_function.cpython-310.pyc
+running install_data
+creating /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/share/ament_index
+creating /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/share/ament_index/resource_index
+creating /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/share/ament_index/resource_index/packages
+copying resource/py_motor_raw_pwm -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/share/ament_index/resource_index/packages
+copying package.xml -> /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/share/py_motor_raw_pwm
+running install_egg_info
+Copying ../build/py_motor_raw_pwm/py_motor_raw_pwm.egg-info to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/python3.10/site-packages/py_motor_raw_pwm-0.0.0-py3.10.egg-info
+running install_scripts
+Installing SetSpeed script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm
+Installing SpeedSetter script to /home/robot1/ros2_ws/src/install/py_motor_raw_pwm/lib/py_motor_raw_pwm
+writing list of installed files to '/home/robot1/ros2_ws/src/build/py_motor_raw_pwm/install.log'

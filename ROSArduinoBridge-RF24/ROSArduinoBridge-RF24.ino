@@ -163,9 +163,10 @@ int runCommand() {
   char *p = argv1;
   char *str;
   int pid_args[4];
+
   arg1 = atoi(argv1);
   arg2 = atoi(argv2);
-  
+
   switch(cmd) {
   case GET_BAUDRATE:  //b
     Serial.println(BAUDRATE);
@@ -311,7 +312,6 @@ void loop() {
     
     // Read the next character
     chr = Serial.read();
-    
     // Terminate a command with a CR
     if (chr == 13) {
       if (arg == 1) argv1[index] = NULL;
@@ -373,4 +373,3 @@ void loop() {
   RF24loop();
 #endif
 }
-

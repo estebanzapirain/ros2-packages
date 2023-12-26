@@ -1,0 +1,482 @@
+[0.000000] (-) TimerEvent: {}
+[0.001492] (-) JobUnselected: {'identifier': 'gotoxy'}
+[0.002250] (-) JobUnselected: {'identifier': 'gotoxy_interface'}
+[0.002636] (-) JobUnselected: {'identifier': 'map_interface'}
+[0.002860] (-) JobUnselected: {'identifier': 'map_updater'}
+[0.003302] (-) JobUnselected: {'identifier': 'map_viewer'}
+[0.003599] (-) JobUnselected: {'identifier': 'py_motor_raw_pwm'}
+[0.004032] (-) JobUnselected: {'identifier': 'py_ping'}
+[0.004192] (-) JobUnselected: {'identifier': 'robot_pos_interface'}
+[0.004393] (-) JobUnselected: {'identifier': 'robot_positions'}
+[0.004494] (-) JobUnselected: {'identifier': 'tkinter_serial_monitor'}
+[0.004589] (pwm_interface) JobQueued: {'identifier': 'pwm_interface', 'dependencies': OrderedDict()}
+[0.004728] (pwm_interface) JobStarted: {'identifier': 'pwm_interface'}
+[0.098958] (-) TimerEvent: {}
+[0.199934] (-) TimerEvent: {}
+[0.292783] (pwm_interface) JobProgress: {'identifier': 'pwm_interface', 'progress': 'cmake'}
+[0.293731] (pwm_interface) Command: {'cmd': ['/usr/bin/cmake', '/home/robot1/ros2_ws/src/pwm_interface', '-DCMAKE_INSTALL_PREFIX=/home/robot1/ros2_ws/src/install/pwm_interface'], 'cwd': '/home/robot1/ros2_ws/src/build/pwm_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot1'), ('SSH_CLIENT', '10.2.13.62 55470 22'), ('LC_TIME', 'es_AR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface/lib:/home/robot1/ros2_ws/install/pwm_interface/lib:/home/robot1/ros2_ws/install/map_interface/lib:/home/robot1/ros2_ws/install/gotoxy_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot1'), ('OLDPWD', '/home/robot1/ros2_ws'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'es_AR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/robot1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'robot1'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/robot1/.local/bin:/home/robot1/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'es_AR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', 'localhost:11.0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'es_AR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy:/home/robot1/ros2_ws/install/gotoxy_interface:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'es_AR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'es_AR.UTF-8'), ('LC_IDENTIFICATION', 'es_AR.UTF-8'), ('PWD', '/home/robot1/ros2_ws/src/build/pwm_interface'), ('SSH_CONNECTION', '10.2.13.62 55470 10.2.13.110 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/robot1/ros2_ws/install/tkinter_serial_monitor/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_pos_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/py_ping/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/map_viewer/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/gotoxy/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/gotoxy_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'es_AR.UTF-8'), ('LC_PAPER', 'es_AR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy_interface:/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/gotoxy:/opt/ros/humble')]), 'shell': False}
+[0.300375] (-) TimerEvent: {}
+[0.401364] (-) TimerEvent: {}
+[0.502430] (-) TimerEvent: {}
+[0.603305] (-) TimerEvent: {}
+[0.704017] (-) TimerEvent: {}
+[0.804871] (-) TimerEvent: {}
+[0.905868] (-) TimerEvent: {}
+[1.006790] (-) TimerEvent: {}
+[1.107707] (-) TimerEvent: {}
+[1.208498] (-) TimerEvent: {}
+[1.309342] (-) TimerEvent: {}
+[1.362663] (pwm_interface) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.409516] (-) TimerEvent: {}
+[1.510245] (-) TimerEvent: {}
+[1.611135] (-) TimerEvent: {}
+[1.712019] (-) TimerEvent: {}
+[1.812862] (-) TimerEvent: {}
+[1.913712] (-) TimerEvent: {}
+[2.014775] (-) TimerEvent: {}
+[2.073275] (pwm_interface) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.114939] (-) TimerEvent: {}
+[2.119042] (pwm_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.215137] (-) TimerEvent: {}
+[2.315918] (-) TimerEvent: {}
+[2.416936] (-) TimerEvent: {}
+[2.502317] (pwm_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.517066] (-) TimerEvent: {}
+[2.528716] (pwm_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.530645] (pwm_interface) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.533467] (pwm_interface) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.548133] (pwm_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.617315] (-) TimerEvent: {}
+[2.718116] (-) TimerEvent: {}
+[2.818870] (-) TimerEvent: {}
+[2.919601] (-) TimerEvent: {}
+[2.928373] (pwm_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.956584] (pwm_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.957523] (pwm_interface) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.959171] (pwm_interface) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.012174] (pwm_interface) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.019743] (-) TimerEvent: {}
+[3.120528] (-) TimerEvent: {}
+[3.221274] (-) TimerEvent: {}
+[3.321872] (-) TimerEvent: {}
+[3.422528] (-) TimerEvent: {}
+[3.523238] (-) TimerEvent: {}
+[3.623995] (-) TimerEvent: {}
+[3.724859] (-) TimerEvent: {}
+[3.825751] (-) TimerEvent: {}
+[3.926445] (-) TimerEvent: {}
+[4.003704] (pwm_interface) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[4.026647] (-) TimerEvent: {}
+[4.127397] (-) TimerEvent: {}
+[4.228021] (-) TimerEvent: {}
+[4.328860] (-) TimerEvent: {}
+[4.429954] (-) TimerEvent: {}
+[4.530620] (-) TimerEvent: {}
+[4.631257] (-) TimerEvent: {}
+[4.731890] (-) TimerEvent: {}
+[4.821264] (pwm_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[4.832041] (-) TimerEvent: {}
+[4.869783] (pwm_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.932213] (-) TimerEvent: {}
+[4.979615] (pwm_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[5.032445] (-) TimerEvent: {}
+[5.133088] (-) TimerEvent: {}
+[5.233732] (-) TimerEvent: {}
+[5.334402] (-) TimerEvent: {}
+[5.435060] (-) TimerEvent: {}
+[5.471900] (pwm_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[5.535227] (-) TimerEvent: {}
+[5.635868] (-) TimerEvent: {}
+[5.736583] (-) TimerEvent: {}
+[5.837232] (-) TimerEvent: {}
+[5.937954] (-) TimerEvent: {}
+[6.038630] (-) TimerEvent: {}
+[6.139256] (-) TimerEvent: {}
+[6.239916] (-) TimerEvent: {}
+[6.340651] (-) TimerEvent: {}
+[6.441380] (-) TimerEvent: {}
+[6.542248] (-) TimerEvent: {}
+[6.642902] (-) TimerEvent: {}
+[6.743681] (-) TimerEvent: {}
+[6.844395] (-) TimerEvent: {}
+[6.945007] (-) TimerEvent: {}
+[7.045618] (-) TimerEvent: {}
+[7.075387] (pwm_interface) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[7.145791] (-) TimerEvent: {}
+[7.246465] (-) TimerEvent: {}
+[7.347205] (-) TimerEvent: {}
+[7.447876] (-) TimerEvent: {}
+[7.549596] (-) TimerEvent: {}
+[7.650284] (-) TimerEvent: {}
+[7.750959] (-) TimerEvent: {}
+[7.851607] (-) TimerEvent: {}
+[7.952219] (-) TimerEvent: {}
+[8.052847] (-) TimerEvent: {}
+[8.089440] (pwm_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[8.153025] (-) TimerEvent: {}
+[8.253774] (-) TimerEvent: {}
+[8.354968] (-) TimerEvent: {}
+[8.455611] (-) TimerEvent: {}
+[8.556486] (-) TimerEvent: {}
+[8.657537] (-) TimerEvent: {}
+[8.758168] (-) TimerEvent: {}
+[8.858953] (-) TimerEvent: {}
+[8.959810] (-) TimerEvent: {}
+[9.060407] (-) TimerEvent: {}
+[9.161131] (-) TimerEvent: {}
+[9.262101] (-) TimerEvent: {}
+[9.285519] (pwm_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[9.362245] (-) TimerEvent: {}
+[9.410067] (pwm_interface) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[9.441952] (pwm_interface) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[9.462408] (-) TimerEvent: {}
+[9.563195] (-) TimerEvent: {}
+[9.590609] (pwm_interface) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[9.591393] (pwm_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[9.591925] (pwm_interface) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[9.592311] (pwm_interface) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[9.663452] (-) TimerEvent: {}
+[9.708239] (pwm_interface) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[9.763584] (-) TimerEvent: {}
+[9.864248] (-) TimerEvent: {}
+[9.916775] (pwm_interface) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[9.964412] (-) TimerEvent: {}
+[10.065108] (-) TimerEvent: {}
+[10.165770] (-) TimerEvent: {}
+[10.210701] (pwm_interface) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[10.224108] (pwm_interface) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[10.245098] (pwm_interface) StdoutLine: {'line': b'-- Configuring done\n'}
+[10.265946] (-) TimerEvent: {}
+[10.366661] (-) TimerEvent: {}
+[10.396639] (pwm_interface) StdoutLine: {'line': b'-- Generating done\n'}
+[10.408896] (pwm_interface) StdoutLine: {'line': b'-- Build files have been written to: /home/robot1/ros2_ws/src/build/pwm_interface\n'}
+[10.428840] (pwm_interface) CommandEnded: {'returncode': 0}
+[10.430694] (pwm_interface) JobProgress: {'identifier': 'pwm_interface', 'progress': 'build'}
+[10.433038] (pwm_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/robot1/ros2_ws/src/build/pwm_interface', '--', '-j4', '-l4'], 'cwd': '/home/robot1/ros2_ws/src/build/pwm_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot1'), ('SSH_CLIENT', '10.2.13.62 55470 22'), ('LC_TIME', 'es_AR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface/lib:/home/robot1/ros2_ws/install/pwm_interface/lib:/home/robot1/ros2_ws/install/map_interface/lib:/home/robot1/ros2_ws/install/gotoxy_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot1'), ('OLDPWD', '/home/robot1/ros2_ws'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'es_AR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/robot1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'robot1'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/robot1/.local/bin:/home/robot1/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'es_AR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', 'localhost:11.0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'es_AR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy:/home/robot1/ros2_ws/install/gotoxy_interface:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'es_AR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'es_AR.UTF-8'), ('LC_IDENTIFICATION', 'es_AR.UTF-8'), ('PWD', '/home/robot1/ros2_ws/src/build/pwm_interface'), ('SSH_CONNECTION', '10.2.13.62 55470 10.2.13.110 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/robot1/ros2_ws/install/tkinter_serial_monitor/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_pos_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/py_ping/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/map_viewer/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/gotoxy/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/gotoxy_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'es_AR.UTF-8'), ('LC_PAPER', 'es_AR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy_interface:/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/gotoxy:/opt/ros/humble')]), 'shell': False}
+[10.466848] (-) TimerEvent: {}
+[10.567556] (-) TimerEvent: {}
+[10.620825] (pwm_interface) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[10.667608] (pwm_interface) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[10.668409] (-) TimerEvent: {}
+[10.713372] (pwm_interface) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_pwm_interface\n'}
+[10.768659] (-) TimerEvent: {}
+[10.869524] (-) TimerEvent: {}
+[10.970470] (-) TimerEvent: {}
+[11.071246] (-) TimerEvent: {}
+[11.174438] (-) TimerEvent: {}
+[11.275241] (-) TimerEvent: {}
+[11.376021] (-) TimerEvent: {}
+[11.476780] (-) TimerEvent: {}
+[11.577588] (-) TimerEvent: {}
+[11.678376] (-) TimerEvent: {}
+[11.779017] (-) TimerEvent: {}
+[11.879750] (-) TimerEvent: {}
+[11.980868] (-) TimerEvent: {}
+[12.081922] (-) TimerEvent: {}
+[12.100403] (pwm_interface) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_generator_c.dir/rosidl_generator_c/pwm_interface/srv/detail/set_speeds__functions.c.o\x1b[0m\n'}
+[12.141229] (pwm_interface) StdoutLine: {'line': b'[  9%] Built target pwm_interface__cpp\n'}
+[12.182257] (-) TimerEvent: {}
+[12.197974] (pwm_interface) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[12.203065] (pwm_interface) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[12.282432] (-) TimerEvent: {}
+[12.330225] (pwm_interface) StdoutLine: {'line': b'running egg_info\n'}
+[12.335757] (pwm_interface) StdoutLine: {'line': b'creating pwm_interface.egg-info\n'}
+[12.337880] (pwm_interface) StdoutLine: {'line': b'writing pwm_interface.egg-info/PKG-INFO\n'}
+[12.339914] (pwm_interface) StdoutLine: {'line': b'writing dependency_links to pwm_interface.egg-info/dependency_links.txt\n'}
+[12.341884] (pwm_interface) StdoutLine: {'line': b'writing top-level names to pwm_interface.egg-info/top_level.txt\n'}
+[12.344089] (pwm_interface) StdoutLine: {'line': b"writing manifest file 'pwm_interface.egg-info/SOURCES.txt'\n"}
+[12.355218] (pwm_interface) StdoutLine: {'line': b"reading manifest file 'pwm_interface.egg-info/SOURCES.txt'\n"}
+[12.359485] (pwm_interface) StdoutLine: {'line': b"writing manifest file 'pwm_interface.egg-info/SOURCES.txt'\n"}
+[12.382645] (-) TimerEvent: {}
+[12.483450] (-) TimerEvent: {}
+[12.561653] (pwm_interface) StdoutLine: {'line': b'[ 16%] Built target ament_cmake_python_build_pwm_interface_egg\n'}
+[12.583664] (-) TimerEvent: {}
+[12.620111] (pwm_interface) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[12.648818] (pwm_interface) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libpwm_interface__rosidl_generator_c.so\x1b[0m\n'}
+[12.683957] (-) TimerEvent: {}
+[12.785615] (-) TimerEvent: {}
+[12.867541] (pwm_interface) StdoutLine: {'line': b'[ 22%] Built target pwm_interface__rosidl_generator_c\n'}
+[12.885875] (-) TimerEvent: {}
+[12.927215] (pwm_interface) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[12.986163] (-) TimerEvent: {}
+[13.087614] (-) TimerEvent: {}
+[13.189026] (-) TimerEvent: {}
+[13.290578] (-) TimerEvent: {}
+[13.391898] (-) TimerEvent: {}
+[13.493410] (-) TimerEvent: {}
+[13.595387] (-) TimerEvent: {}
+[13.667564] (pwm_interface) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/pwm_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/pwm_interface/srv/detail/set_speeds__type_support.cpp.o\x1b[0m\n'}
+[13.695594] (-) TimerEvent: {}
+[13.769233] (pwm_interface) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/pwm_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/pwm_interface/srv/detail/dds_fastrtps/set_speeds__type_support.cpp.o\x1b[0m\n'}
+[13.795815] (-) TimerEvent: {}
+[13.896748] (-) TimerEvent: {}
+[13.998721] (-) TimerEvent: {}
+[14.000102] (pwm_interface) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/pwm_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/pwm_interface/srv/set_speeds__type_support.cpp.o\x1b[0m\n'}
+[14.098903] (-) TimerEvent: {}
+[14.200175] (-) TimerEvent: {}
+[14.301642] (-) TimerEvent: {}
+[14.406575] (-) TimerEvent: {}
+[14.481790] (pwm_interface) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/pwm_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/pwm_interface/srv/detail/set_speeds__type_support_c.cpp.o\x1b[0m\n'}
+[14.506846] (-) TimerEvent: {}
+[14.608551] (-) TimerEvent: {}
+[14.710407] (-) TimerEvent: {}
+[14.812247] (-) TimerEvent: {}
+[14.914609] (-) TimerEvent: {}
+[15.015803] (-) TimerEvent: {}
+[15.116865] (-) TimerEvent: {}
+[15.217903] (-) TimerEvent: {}
+[15.319006] (-) TimerEvent: {}
+[15.420201] (-) TimerEvent: {}
+[15.521353] (-) TimerEvent: {}
+[15.622509] (-) TimerEvent: {}
+[15.697509] (pwm_interface) StdoutLine: {'line': b'[ 41%] \x1b[32m\x1b[1mLinking CXX shared library libpwm_interface__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[15.722761] (-) TimerEvent: {}
+[15.824465] (-) TimerEvent: {}
+[15.926496] (-) TimerEvent: {}
+[15.961911] (pwm_interface) StdoutLine: {'line': b'[ 41%] Built target pwm_interface__rosidl_typesupport_cpp\n'}
+[16.026866] (-) TimerEvent: {}
+[16.032847] (pwm_interface) StdoutLine: {'line': b'[ 45%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[16.127057] (-) TimerEvent: {}
+[16.228650] (-) TimerEvent: {}
+[16.330531] (-) TimerEvent: {}
+[16.348504] (pwm_interface) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libpwm_interface__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[16.430732] (-) TimerEvent: {}
+[16.532451] (-) TimerEvent: {}
+[16.575687] (pwm_interface) StdoutLine: {'line': b'[ 48%] Built target pwm_interface__rosidl_typesupport_introspection_cpp\n'}
+[16.632738] (-) TimerEvent: {}
+[16.634396] (pwm_interface) StdoutLine: {'line': b'[ 51%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[16.685123] (pwm_interface) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library libpwm_interface__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[16.733210] (-) TimerEvent: {}
+[16.777334] (pwm_interface) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library libpwm_interface__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[16.833365] (-) TimerEvent: {}
+[16.934487] (-) TimerEvent: {}
+[17.036221] (-) TimerEvent: {}
+[17.137516] (-) TimerEvent: {}
+[17.202083] (pwm_interface) StdoutLine: {'line': b'[ 58%] Built target pwm_interface__rosidl_typesupport_fastrtps_cpp\n'}
+[17.209627] (pwm_interface) StdoutLine: {'line': b'[ 58%] Built target pwm_interface__rosidl_typesupport_fastrtps_c\n'}
+[17.237678] (-) TimerEvent: {}
+[17.338420] (-) TimerEvent: {}
+[17.439135] (-) TimerEvent: {}
+[17.540013] (-) TimerEvent: {}
+[17.579757] (pwm_interface) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pwm_interface/srv/detail/set_speeds__type_support.c.o\x1b[0m\n'}
+[17.640222] (-) TimerEvent: {}
+[17.741899] (-) TimerEvent: {}
+[17.794624] (pwm_interface) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking C shared library libpwm_interface__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[17.842136] (-) TimerEvent: {}
+[17.903723] (pwm_interface) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/pwm_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/pwm_interface/srv/set_speeds__type_support.cpp.o\x1b[0m\n'}
+[17.931146] (pwm_interface) StdoutLine: {'line': b'[ 67%] Built target pwm_interface__rosidl_typesupport_introspection_c\n'}
+[17.942353] (-) TimerEvent: {}
+[18.043125] (-) TimerEvent: {}
+[18.060846] (pwm_interface) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libpwm_interface__rosidl_typesupport_c.so\x1b[0m\n'}
+[18.143358] (-) TimerEvent: {}
+[18.226766] (pwm_interface) StdoutLine: {'line': b'[ 70%] Built target pwm_interface__rosidl_typesupport_c\n'}
+[18.243532] (-) TimerEvent: {}
+[18.321174] (pwm_interface) StdoutLine: {'line': b'[ 70%] Built target pwm_interface\n'}
+[18.343783] (-) TimerEvent: {}
+[18.420438] (pwm_interface) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[18.443949] (-) TimerEvent: {}
+[18.544696] (-) TimerEvent: {}
+[18.645323] (-) TimerEvent: {}
+[18.745965] (-) TimerEvent: {}
+[18.846654] (-) TimerEvent: {}
+[18.947918] (-) TimerEvent: {}
+[19.048599] (-) TimerEvent: {}
+[19.149213] (-) TimerEvent: {}
+[19.249847] (-) TimerEvent: {}
+[19.350512] (-) TimerEvent: {}
+[19.451124] (-) TimerEvent: {}
+[19.551727] (-) TimerEvent: {}
+[19.652327] (-) TimerEvent: {}
+[19.752943] (-) TimerEvent: {}
+[19.853621] (-) TimerEvent: {}
+[19.948950] (pwm_interface) StdoutLine: {'line': b'[ 74%] Built target pwm_interface__py\n'}
+[19.953792] (-) TimerEvent: {}
+[20.041081] (pwm_interface) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_generator_py.dir/rosidl_generator_py/pwm_interface/srv/_set_speeds_s.c.o\x1b[0m\n'}
+[20.053964] (-) TimerEvent: {}
+[20.154642] (-) TimerEvent: {}
+[20.255317] (-) TimerEvent: {}
+[20.356035] (-) TimerEvent: {}
+[20.456715] (-) TimerEvent: {}
+[20.557397] (-) TimerEvent: {}
+[20.642973] (pwm_interface) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/pwm_interface/libpwm_interface__rosidl_generator_py.so\x1b[0m\n'}
+[20.657603] (-) TimerEvent: {}
+[20.758376] (-) TimerEvent: {}
+[20.825755] (pwm_interface) StdoutLine: {'line': b'[ 80%] Built target pwm_interface__rosidl_generator_py\n'}
+[20.858627] (-) TimerEvent: {}
+[20.923708] (pwm_interface) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[20.925265] (pwm_interface) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[20.933124] (pwm_interface) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/pwm_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[20.958902] (-) TimerEvent: {}
+[21.059855] (-) TimerEvent: {}
+[21.160631] (-) TimerEvent: {}
+[21.261513] (-) TimerEvent: {}
+[21.362420] (-) TimerEvent: {}
+[21.415177] (pwm_interface) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/pwm_interface/pwm_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[21.416015] (pwm_interface) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/pwm_interface/pwm_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[21.445890] (pwm_interface) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/pwm_interface/pwm_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[21.462653] (-) TimerEvent: {}
+[21.564008] (-) TimerEvent: {}
+[21.594153] (pwm_interface) StdoutLine: {'line': b'[100%] Built target pwm_interface__rosidl_typesupport_c__pyext\n'}
+[21.618374] (pwm_interface) StdoutLine: {'line': b'[100%] Built target pwm_interface__rosidl_typesupport_introspection_c__pyext\n'}
+[21.647386] (pwm_interface) StdoutLine: {'line': b'[100%] Built target pwm_interface__rosidl_typesupport_fastrtps_c__pyext\n'}
+[21.664157] (-) TimerEvent: {}
+[21.691442] (pwm_interface) CommandEnded: {'returncode': 0}
+[21.764311] (-) TimerEvent: {}
+[21.864964] (-) TimerEvent: {}
+[21.965911] (-) TimerEvent: {}
+[22.066623] (-) TimerEvent: {}
+[22.069856] (pwm_interface) JobProgress: {'identifier': 'pwm_interface', 'progress': 'install'}
+[22.107131] (pwm_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/robot1/ros2_ws/src/build/pwm_interface'], 'cwd': '/home/robot1/ros2_ws/src/build/pwm_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'robot1'), ('SSH_CLIENT', '10.2.13.62 55470 22'), ('LC_TIME', 'es_AR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface/lib:/home/robot1/ros2_ws/install/pwm_interface/lib:/home/robot1/ros2_ws/install/map_interface/lib:/home/robot1/ros2_ws/install/gotoxy_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/robot1'), ('OLDPWD', '/home/robot1/ros2_ws'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'es_AR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/robot1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'robot1'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/robot1/.local/bin:/home/robot1/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'es_AR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', 'localhost:11.0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'es_AR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy:/home/robot1/ros2_ws/install/gotoxy_interface:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'es_AR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'es_AR.UTF-8'), ('LC_IDENTIFICATION', 'es_AR.UTF-8'), ('PWD', '/home/robot1/ros2_ws/src/build/pwm_interface'), ('SSH_CONNECTION', '10.2.13.62 55470 10.2.13.110 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/robot1/ros2_ws/install/tkinter_serial_monitor/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_positions/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/robot_pos_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/py_ping/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/py_motor_raw_pwm/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/pwm_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/map_viewer/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_updater/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/map_interface/local/lib/python3.10/dist-packages:/home/robot1/ros2_ws/install/gotoxy/lib/python3.10/site-packages:/home/robot1/ros2_ws/install/gotoxy_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'es_AR.UTF-8'), ('LC_PAPER', 'es_AR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/robot1/ros2_ws/install/robot_pos_interface:/home/robot1/ros2_ws/install/pwm_interface:/home/robot1/ros2_ws/install/map_interface:/home/robot1/ros2_ws/install/gotoxy_interface:/home/robot1/ros2_ws/install/robot_positions:/home/robot1/ros2_ws/install/py_ping:/home/robot1/ros2_ws/install/py_motor_raw_pwm:/home/robot1/ros2_ws/install/map_viewer:/home/robot1/ros2_ws/install/map_updater:/home/robot1/ros2_ws/install/gotoxy:/opt/ros/humble')]), 'shell': False}
+[22.144971] (pwm_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[22.145977] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/ament_index/resource_index/rosidl_interfaces/pwm_interface\n'}
+[22.147305] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.147987] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg\n'}
+[22.148632] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg/rosidl_generator_c__visibility_control.h\n'}
+[22.149685] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.150560] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.151255] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__functions.h\n'}
+[22.152438] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__functions.c\n'}
+[22.153571] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__struct.h\n'}
+[22.154590] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__type_support.h\n'}
+[22.155621] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/set_speeds.h\n'}
+[22.157092] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/library_path.sh\n'}
+[22.158837] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/library_path.dsv\n'}
+[22.160341] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_generator_c.so\n'}
+[22.162647] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_generator_c.so" to ""\n'}
+[22.163170] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.163573] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg\n'}
+[22.163918] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[22.164908] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.165350] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.165698] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__rosidl_typesupport_fastrtps_c.h\n'}
+[22.166717] (-) TimerEvent: {}
+[22.167436] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_fastrtps_c.so\n'}
+[22.169735] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[22.170294] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.170722] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg\n'}
+[22.171137] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[22.172149] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.172598] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.172994] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__rosidl_typesupport_introspection_c.h\n'}
+[22.174149] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__type_support.c\n'}
+[22.175858] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_introspection_c.so\n'}
+[22.178164] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_introspection_c.so" to ""\n'}
+[22.178660] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_c.so\n'}
+[22.180730] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_c.so" to ""\n'}
+[22.181199] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.181576] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.181948] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.182386] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__struct.hpp\n'}
+[22.183348] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__traits.hpp\n'}
+[22.184440] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__builder.hpp\n'}
+[22.185441] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/set_speeds.hpp\n'}
+[22.186511] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.186980] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg\n'}
+[22.187377] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[22.188389] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.188814] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.189213] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[22.190336] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/dds_fastrtps\n'}
+[22.191298] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_fastrtps_cpp.so\n'}
+[22.193739] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[22.194283] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface\n'}
+[22.194688] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv\n'}
+[22.195043] (pwm_interface) StdoutLine: {'line': b'-- Up-to-date: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail\n'}
+[22.195383] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__type_support.cpp\n'}
+[22.196574] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/include/pwm_interface/pwm_interface/srv/detail/set_speeds__rosidl_typesupport_introspection_cpp.hpp\n'}
+[22.197957] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_introspection_cpp.so\n'}
+[22.200301] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[22.200761] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_cpp.so\n'}
+[22.202900] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_typesupport_cpp.so" to ""\n'}
+[22.203377] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/pythonpath.sh\n'}
+[22.204376] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/pythonpath.dsv\n'}
+[22.205386] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface-0.0.0-py3.10.egg-info\n'}
+[22.206404] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[22.207571] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[22.208601] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[22.209641] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[22.211002] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface\n'}
+[22.211813] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.213075] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv\n'}
+[22.213757] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv/_set_speeds.py\n'}
+[22.214931] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv/__init__.py\n'}
+[22.215887] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv/_set_speeds_s.c\n'}
+[22.217026] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.218430] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.219708] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_c.c\n'}
+[22.220868] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/libpwm_interface__rosidl_generator_py.so\n'}
+[22.222183] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[22.223344] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/__init__.py\n'}
+[22.224284] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/_pwm_interface_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[22.266875] (-) TimerEvent: {}
+[22.367515] (-) TimerEvent: {}
+[22.413735] (pwm_interface) StdoutLine: {'line': b"Listing '/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface'...\n"}
+[22.415202] (pwm_interface) StdoutLine: {'line': b"Compiling '/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/__init__.py'...\n"}
+[22.416398] (pwm_interface) StdoutLine: {'line': b"Listing '/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv'...\n"}
+[22.417312] (pwm_interface) StdoutLine: {'line': b"Compiling '/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv/__init__.py'...\n"}
+[22.418217] (pwm_interface) StdoutLine: {'line': b"Compiling '/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/srv/_set_speeds.py'...\n"}
+[22.440495] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.443376] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[22.444848] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.447636] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[22.449059] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[22.451735] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/local/lib/python3.10/dist-packages/pwm_interface/pwm_interface_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[22.452307] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_generator_py.so\n'}
+[22.454626] (pwm_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/robot1/ros2_ws/src/install/pwm_interface/lib/libpwm_interface__rosidl_generator_py.so" to ""\n'}
+[22.455280] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/srv/SetSpeeds.idl\n'}
+[22.456370] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/srv/SetSpeeds.srv\n'}
+[22.457376] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/srv/SetSpeeds_Request.msg\n'}
+[22.458505] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/srv/SetSpeeds_Response.msg\n'}
+[22.459926] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/ament_index/resource_index/package_run_dependencies/pwm_interface\n'}
+[22.461454] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/ament_index/resource_index/parent_prefix_path/pwm_interface\n'}
+[22.462713] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/ament_prefix_path.sh\n'}
+[22.463829] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/ament_prefix_path.dsv\n'}
+[22.464939] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/path.sh\n'}
+[22.465986] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/environment/path.dsv\n'}
+[22.467121] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/local_setup.bash\n'}
+[22.467498] (-) TimerEvent: {}
+[22.468269] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/local_setup.sh\n'}
+[22.469463] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/local_setup.zsh\n'}
+[22.470544] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/local_setup.dsv\n'}
+[22.471599] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/package.dsv\n'}
+[22.473290] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/ament_index/resource_index/packages/pwm_interface\n'}
+[22.475136] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_generator_cExport.cmake\n'}
+[22.476528] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_generator_cExport-noconfig.cmake\n'}
+[22.477946] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[22.479402] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[22.480812] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_introspection_cExport.cmake\n'}
+[22.482185] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[22.483714] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_cExport.cmake\n'}
+[22.485021] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[22.486404] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_generator_cppExport.cmake\n'}
+[22.487763] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[22.489149] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[22.490593] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[22.491962] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[22.493388] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_cppExport.cmake\n'}
+[22.494753] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interface__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[22.496121] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_generator_pyExport.cmake\n'}
+[22.497426] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/export_pwm_interface__rosidl_generator_pyExport-noconfig.cmake\n'}
+[22.498928] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/rosidl_cmake-extras.cmake\n'}
+[22.500116] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[22.501348] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[22.502668] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[22.503885] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[22.505129] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[22.506419] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[22.507583] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interfaceConfig.cmake\n'}
+[22.508533] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/cmake/pwm_interfaceConfig-version.cmake\n'}
+[22.509611] (pwm_interface) StdoutLine: {'line': b'-- Installing: /home/robot1/ros2_ws/src/install/pwm_interface/share/pwm_interface/package.xml\n'}
+[22.516314] (pwm_interface) CommandEnded: {'returncode': 0}
+[22.567812] (-) TimerEvent: {}
+[22.671174] (-) TimerEvent: {}
+[22.772031] (-) TimerEvent: {}
+[22.872775] (-) TimerEvent: {}
+[22.973399] (-) TimerEvent: {}
+[23.074051] (-) TimerEvent: {}
+[23.174758] (-) TimerEvent: {}
+[23.279186] (-) TimerEvent: {}
+[23.380616] (-) TimerEvent: {}
+[23.481760] (-) TimerEvent: {}
+[23.568247] (pwm_interface) JobEnded: {'identifier': 'pwm_interface', 'rc': 0}
+[23.571213] (-) EventReactorShutdown: {}
