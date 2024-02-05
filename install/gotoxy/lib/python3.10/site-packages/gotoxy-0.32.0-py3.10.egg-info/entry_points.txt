@@ -1,0 +1,4 @@
+[console_scripts]
+gotoxy_client = gotoxy.gotoxy_action_client:main
+gotoxy_server = gotoxy.gotoxy_action_server:main
+
