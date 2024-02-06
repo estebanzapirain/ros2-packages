@@ -23,10 +23,10 @@ fps = 2
 ANGLE_TOLERANCE = 20
 
 #Velocidad de giro
-TURN_SPEED = 80
+TURN_SPEED = 200
 
 #Duración del pulso de giro
-TURN_PULSE_MS = 100
+TURN_PULSE_MS = 1000
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -164,10 +164,10 @@ class GoToXYActionServer(Node):
             pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
             
             #Hacer un ajuste más fino
-            if pointing_at_goal & (ANGLE_TOLERANCE > 5):
-                TURN_SPEED = TURN_SPEED - 5
-                ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
-                pointing_at_goal = False         
+#            if pointing_at_goal & (ANGLE_TOLERANCE > 5):
+#                TURN_SPEED = TURN_SPEED - 5
+#                ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
+#                pointing_at_goal = False         
             
             #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
             #time.sleep(1/fps - TURN_PULSE_MS/1000)

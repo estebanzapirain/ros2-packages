@@ -22,11 +22,14 @@ fps = 2
 #Tolerance for angles (degrees)
 ANGLE_TOLERANCE = 20
 
+#Tolerance for distance (pixels)
+MIN_DISTANCE = 20
+
 #Velocidad de giro
 TURN_SPEED = 80
 
 #Duración del pulso de giro
-TURN_PULSE_MS = 100
+TURN_PULSE_MS = 300
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -120,7 +123,7 @@ class GoToXYActionServer(Node):
         
         # Indicadores de cumplimiento de la meta
         pointing_at_goal = False
-        in_goal_xy = False
+        close_to_goal = False
         in_goal_angle = False
         
         # En pos1 está la posición del robot1
@@ -139,16 +142,14 @@ class GoToXYActionServer(Node):
         # 1- girar hasta que el angulo coincida con la direccion
         while pointing_at_goal == False:
            
+            
+            # VER LO DE LOS ANGULOS MAYORES O MENORES DE 180, PARA DONDE CONVIENE GIRAR
             # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
             if goal_angle < pos1.angle:
                 response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED) #id, vel_izq, vel_der
             # Sino, girar a la izquierda    
             else:
                 response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED) #id, vel_izq, vel_der
-            
-            # El pulso de giro es menor que el total, para que no se pase de largo. Girar durante un tiempo, y frenar
-            #time.sleep(TURN_PULSE_MS/1000)
-            #response = self.set_speeds_client.send_request(2, 0, 0)
             
             #Actualizar ángulo
             angle_difference = abs(pos1.angle - goal_angle)
@@ -171,12 +172,28 @@ class GoToXYActionServer(Node):
             
             #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
             #time.sleep(1/fps - TURN_PULSE_MS/1000)
-            time.sleep(1/fps)
-            
-#        response = self.set_speeds_client.send_request(2, 0, 0) #frenar   
-           
-        # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)
+            time.sleep(1/fps) 
         
+        # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)
+        while close_to_goal == False:
+           
+            
+            # VER LO DE LOS ANGULOS MAYORES O MENORES DE 180, PARA DONDE CONVIENE GIRAR
+            # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
+            distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
+            if ( distance_to_goal > MIN_DISTANCE):
+                response = self.set_speeds_client.send_request(2, TURN_SPEED , TURN_SPEED) #id, vel_izq, vel_der
+            else:
+                close_to_goal = True
+            
+            #Publicar distancia
+            feedback_msg.partial_x = pos1.x
+            self.get_logger().info('Distance X: {0}'.format(pos1.x - goal_handle.request.goal_x))
+            self.get_logger().info('Distance Y: {0}'.format(pos1.y - goal_handle.request.goal_y))
+            goal_handle.publish_feedback(feedback_msg)
+
+            time.sleep(1/fps)             
+   
         # 3- girar el angulo hasta que coincida con el goal_angle
         
         
