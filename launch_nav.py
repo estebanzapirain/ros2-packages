@@ -4,8 +4,8 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
     node1 = Node(
-        package="py_motor_raw_pwm",
-        executable="SpeedSetter",
+        package="setspeeds_server",
+        executable="SetSpeeds",
     )
     node2 = Node(
         package="gotoxy",

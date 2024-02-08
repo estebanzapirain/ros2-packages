@@ -14,7 +14,7 @@ import sys
 #ROS message interfaces
 from robot_pos_interface.msg import RobotPosition
 from gotoxy_interface.action import GoToXY
-from pwm_interface.srv import SetSpeeds
+from pwm_interface.srv import SetSpeedsT
 
 #Frames per second
 fps = 5
@@ -29,10 +29,11 @@ MIN_DISTANCE = 40
 TURN_SPEED = 100
 
 #Velocidad de avance
-TRAVEL_SPEED = 150
+TRAVEL_SPEED = 100
 
 #Duración del pulso de giro
-TURN_PULSE_MS = 300
+TURN_MS = 100
+TRAVEL_MS = 100
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -70,15 +71,16 @@ class SetSpeedsClient(Node):
 
     def __init__(self):
         super().__init__('set_speeds_client')
-        self.cli = self.create_client(SetSpeeds, 'set_speeds')
+        self.cli = self.create_client(SetSpeedsT, 'set_speeds')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('robot not available, waiting again...')
-        self.req = SetSpeeds.Request()
+        self.req = SetSpeedsT.Request()
 
-    def send_request(self, id, left, right):
+    def send_request(self, id, left, right, time):
         self.req.id = id
         self.req.left = left
         self.req.right = right
+        self.req.time = time
         self.future = self.cli.call_async(self.req)
         rclpy.spin_until_future_complete(self, self.future)
         return self.future.result()
@@ -153,10 +155,10 @@ class GoToXYActionServer(Node):
                 # VER LO DE LOS ANGULOS MAYORES O MENORES DE 180, PARA DONDE CONVIENE GIRAR
                 # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
                 if goal_angle < pos1.angle:
-                    response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED) #id, vel_izq, vel_der
+                    response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
                 # Sino, girar a la izquierda    
                 else:
-                    response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED) #id, vel_izq, vel_der
+                    response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
                 
                 #Actualizar ángulo
                 angle_difference = abs(pos1.angle - goal_angle)
@@ -187,9 +189,7 @@ class GoToXYActionServer(Node):
             # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
             distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
             if ( distance_to_goal > MIN_DISTANCE):
-                for x in range(5):
-                    response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED) #id, vel_izq, vel_der
-                    time.sleep(1/fps) 
+                    response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
             else:
                 close_to_goal = True
             

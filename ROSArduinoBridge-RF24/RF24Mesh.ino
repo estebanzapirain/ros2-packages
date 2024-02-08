@@ -140,23 +140,44 @@ if (coincide==true) //clave
 
         //Comando
         cmd = mensaje[0];
-
+/*
         //Argumento 1
         mensaje = mensaje.substring(2,mensaje.length());
         String argv1_str = mensaje.substring(0,mensaje.indexOf(' '));
 
         //Argumento 2
         String argv2_str = mensaje.substring(mensaje.indexOf(' ') + 1,mensaje.length());
+
+        //Argumento 3
+        String argv3_str = mensaje.substring(mensaje.indexOf(' ') + 1,mensaje.length());
        
         argv1_str.toCharArray(argv1, 16);
         argv2_str.toCharArray(argv2, 16);
+*/
+
+        mensaje = mensaje.substring(2,mensaje.length());
+        String argv1_str = mensaje.substring(0,mensaje.indexOf(' '));
         
+        mensaje = mensaje.substring(mensaje.indexOf(' ') + 1,mensaje.length());
+        String argv2_str = mensaje.substring(0,mensaje.indexOf(' '));
+        
+        mensaje = mensaje.substring(mensaje.indexOf(' ') + 1,mensaje.length());
+        String argv3_str = mensaje.substring(0,mensaje.indexOf(' '));
+         
+        argv1_str.toCharArray(argv1, 16);
+        argv2_str.toCharArray(argv2, 16);
+        argv3_str.toCharArray(argv3, 16);                
         Serial.print("cmd= ");
         Serial.println(cmd);
         Serial.print("arg1= ");
         Serial.println(argv1);
         Serial.print("arg2= ");
         Serial.println(argv2);
+        Serial.print("arg3= ");
+        Serial.println(argv3);
+
+
+        
         
         mensaje="";
         runCommand();

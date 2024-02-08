@@ -1,6 +1,0 @@
-{
-  "package_name": "pwm_interface",
-  "non_idl_tuples": [
-    "/home/robot1/ros2_ws/src/pwm_interface:srv/SetSpeeds.srv"
-  ]
-}

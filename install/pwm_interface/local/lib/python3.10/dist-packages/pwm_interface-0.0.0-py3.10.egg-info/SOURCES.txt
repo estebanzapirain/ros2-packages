@@ -1,6 +1,0 @@
-setup.py
-pwm_interface/__init__.py
-pwm_interface.egg-info/PKG-INFO
-pwm_interface.egg-info/SOURCES.txt
-pwm_interface.egg-info/dependency_links.txt
-pwm_interface.egg-info/top_level.txt

@@ -1,5 +1,0 @@
-uint8 id
-int16 left
-int16 right
----
-int8 ok

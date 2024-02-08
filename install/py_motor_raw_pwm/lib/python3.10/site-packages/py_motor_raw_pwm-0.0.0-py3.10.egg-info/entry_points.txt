@@ -1,4 +1,0 @@
-[console_scripts]
-SetSpeed = py_motor_raw_pwm.client_member_function:main
-SpeedSetter = py_motor_raw_pwm.service_member_function:main
-
