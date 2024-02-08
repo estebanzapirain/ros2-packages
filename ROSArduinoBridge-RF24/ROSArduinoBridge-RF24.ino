@@ -142,18 +142,23 @@ char cmd;
 // Character arrays to hold the first and second arguments
 char argv1[16];
 char argv2[16];
+char argv3[16];
 
 // The arguments converted to integers
 long arg1;
 long arg2;
+long arg3;
 
 /* Clear the current command parameters */
 void resetCommand() {
   cmd = NULL;
   memset(argv1, 0, sizeof(argv1));
   memset(argv2, 0, sizeof(argv2));
+  memset(argv3, 0, sizeof(argv3));
+
   arg1 = 0;
   arg2 = 0;
+  arg3 = 0;
   arg = 0;
   index = 0;
 }
@@ -167,6 +172,7 @@ int runCommand() {
 
   arg1 = atoi(argv1);
   arg2 = atoi(argv2);
+  arg3 = atoi(argv3);
 
   switch(cmd) {
   case GET_BAUDRATE:  //b
@@ -239,6 +245,18 @@ int runCommand() {
     Serial.print(arg2);
     Serial.println("OK"); 
     break;
+  case MOTOR_RAW_PWM_TIME: //t
+    /* Reset the auto stop timer */
+    lastMotorCommand = millis();
+    resetPID();
+    moving = 0; // Sneaky way to temporarily disable the PID
+    setMotorSpeedsT(arg1, arg2, arg3);
+    Serial.print(arg1);
+    Serial.print(arg2);
+    Serial.print(arg3);
+    Serial.println("OK"); 
+    break;
+
   case UPDATE_PID:
     while ((str = strtok_r(p, ":", &p)) != '\0') {
        pid_args[i] = atoi(str);
@@ -249,11 +267,6 @@ int runCommand() {
     Ki = pid_args[2];
     Ko = pid_args[3];
     Serial.println("OK");
-    break;
-  case SET_AUTO_STOP_INTERVAL: //i
-    AUTO_STOP_INTERVAL = arg1;
-    Serial.print("AUTO_STOP_INTERVAL = ");
-    Serial.println(AUTO_STOP_INTERVAL);
     break;
 #endif
   default:
@@ -322,6 +335,7 @@ void loop() {
     if (chr == 13) {
       if (arg == 1) argv1[index] = NULL;
       else if (arg == 2) argv2[index] = NULL;
+      else if (arg == 3) argv3[index] = NULL;
       runCommand();
       resetCommand();
     }
@@ -332,6 +346,11 @@ void loop() {
       else if (arg == 1)  {
         argv1[index] = NULL;
         arg = 2;
+        index = 0;
+      }
+      else if (arg == 2)  {
+        argv2[index] = NULL;
+        arg = 3;
         index = 0;
       }
       continue;
@@ -349,6 +368,10 @@ void loop() {
       }
       else if (arg == 2) {
         argv2[index] = chr;
+        index++;
+      }
+      else if (arg == 3) {
+        argv3[index] = chr;
         index++;
       }
     }

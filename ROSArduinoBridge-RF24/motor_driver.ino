@@ -86,6 +86,13 @@
     setMotorSpeed(LEFT, leftSpeed);
     setMotorSpeed(RIGHT, rightSpeed);
   }
+  void setMotorSpeedsT(int leftSpeed, int rightSpeed, int ms) {
+    setMotorSpeed(LEFT, leftSpeed);
+    setMotorSpeed(RIGHT, rightSpeed);
+    delay(ms);
+    setMotorSpeed(LEFT, 0);
+    setMotorSpeed(RIGHT, 0);
+  }
 #else
   #error A motor driver must be selected!
 #endif
