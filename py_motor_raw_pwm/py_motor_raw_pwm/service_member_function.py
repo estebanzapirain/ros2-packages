@@ -5,7 +5,7 @@ from rclpy.node import Node
 
 # Biblioteca de comunicación serie RPi-Arduino
 import serial
-arduino = serial.Serial('/dev/ttyUSB0', 112500, timeout=1)
+arduino = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 arduino.reset_input_buffer()
 
 
@@ -30,13 +30,13 @@ class MinimalService(Node):
         arduino.write(b'  ')
         arduino.write(str(request.right).encode())
         arduino.write(b'\r')
-        self.get_logger().info('ID: %s Velocidades Izquierda: %s Derecha: %s' % (str(request.id).encode(), str(request.left).encode(), str(request.right).encode()))
+        #self.get_logger().info('ID: %s Velocidades Izquierda: %s Derecha: %s' % (str(request.id).encode(), str(request.left).encode(), str(request.right).encode()))
         # valor = arduino.readline().decode('ascii').rstrip()
         valor = arduino.readline()
-        self.get_logger().info(comando)
+        #self.get_logger().info(comando)
         if valor == "OK":
                 response.ok = 1
-        self.get_logger().info('ID: %d Velocidades Izquierda: %d Derecha: %d' % (request.id, request.left, request.right))
+        #self.get_logger().info('ID: %d Velocidades Izquierda: %d Derecha: %d' % (request.id, request.left, request.right))
 
         return response
 

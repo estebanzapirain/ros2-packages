@@ -25,7 +25,7 @@ from robot_pos_interface.msg import RobotPosition
 RAD2GRAD = 180/np.pi
 
 #frames per second
-fps = 2
+fps = 10
 
 #Init variables
 msg1 = Block()
@@ -148,7 +148,7 @@ def main(args=None):
     executor_thread = threading.Thread(target=executor.spin, daemon=True)
     executor_thread.start()
     
-    rate = map_subscriber.create_rate(2)
+    rate = map_subscriber.create_rate(fps)
     try:
         while rclpy.ok():
             #print('Help me body, you are my only hope')

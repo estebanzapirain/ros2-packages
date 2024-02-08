@@ -21,7 +21,6 @@
 #define ANALOG_WRITE   'x'
 #define LEFT            0
 #define RIGHT           1
+#define SET_AUTO_STOP_INTERVAL 'i'
 
 #endif
-
-

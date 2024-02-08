@@ -120,7 +120,7 @@
   /* Stop the robot if it hasn't received a movement command
    in this number of milliseconds */
   //#define AUTO_STOP_INTERVAL 20000
-  #define AUTO_STOP_INTERVAL 100
+  int AUTO_STOP_INTERVAL = 100;
   long lastMotorCommand = AUTO_STOP_INTERVAL;
 #endif
 
@@ -250,6 +250,11 @@ int runCommand() {
     Ko = pid_args[3];
     Serial.println("OK");
     break;
+  case SET_AUTO_STOP_INTERVAL: //i
+    AUTO_STOP_INTERVAL = arg1;
+    Serial.print("AUTO_STOP_INTERVAL = ");
+    Serial.println(AUTO_STOP_INTERVAL);
+    break;
 #endif
   default:
     Serial.println("Invalid Command");
@@ -335,6 +340,7 @@ void loop() {
       if (arg == 0) {
         // The first arg is the single-letter command
         cmd = chr;
+        Serial.println(cmd);
       }
       else if (arg == 1) {
         // Subsequent arguments can be more than one character

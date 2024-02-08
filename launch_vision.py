@@ -4,7 +4,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
     node1 = Node(
-        package="map_updater",
+        package="map_updater_wired",
         executable="map_getter",
     )
     node2 = Node(
