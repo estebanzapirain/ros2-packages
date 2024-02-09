@@ -48,9 +48,9 @@ class MapSubscriber(Node):
         if msg.sig == 1:
             sig_color = 'green'
         elif msg.sig == 2:
-            sig_color = 'yellow'
-        elif msg.sig == 3:
             sig_color = 'red'
+        elif msg.sig == 3:
+            sig_color = 'yellow'
         elif msg.sig == 4:
             sig_color = 'blue'
         else:

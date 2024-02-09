@@ -32,8 +32,8 @@ TURN_SPEED = 100
 TRAVEL_SPEED = 100
 
 #Duración del pulso de giro
-TURN_MS = 100
-TRAVEL_MS = 100
+TURN_MS = 50
+TRAVEL_MS = 50
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -118,6 +118,23 @@ class GoToXYActionServer(Node):
                 angle = 180
         return int(angle)
     
+    #retornar la diferencia entre ángulos. entre -180 (giro horario) y 180 (giro antihorario). 0 significa que está dentro de la tolerancia
+    def GetAngleDifference(self, goal_angle, robot_angle):
+        angle_between = goal_angle - robot_angle
+        if angle_between > ANGLE_TOLERANCE:
+            if angle_between < 180:
+                return angle_between
+            else:
+                return angle_between - 360
+        elif angle_between < -ANGLE_TOLERANCE:
+            if angle_between > -180:
+                return angle_between
+            else:
+                return 360 + angle_between
+        else:
+            return 0
+
+     
     def execute_callback(self, goal_handle):
         
         global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED
@@ -129,7 +146,7 @@ class GoToXYActionServer(Node):
         # Indicadores de cumplimiento de la meta
         pointing_at_goal = False
         close_to_goal = False
-        in_goal_angle = False
+        done = False
         
         # En pos1 está la posición del robot1
         feedback_msg.partial_x = pos1.x 
@@ -137,41 +154,48 @@ class GoToXYActionServer(Node):
         feedback_msg.partial_angle = pos1.angle        
 
         #calcular la direccion a la que se tiene que mover direccion = arctan((goal_y-y)/(goal_x-x))
-        dx = goal_handle.request.goal_x - XM
-        dy = goal_handle.request.goal_y - YM
+        dx = goal_handle.request.goal_x - pos1.x
+        dy = goal_handle.request.goal_y - pos1.y
                     
         goal_angle = self.getAngle(dx, dy)
        
         while close_to_goal == False:
             
-            angle_difference = abs(pos1.angle-goal_angle)
-            pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
+            angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
+            
+            pointing_at_goal =  angle_difference == 0
                 
         # 1- girar hasta que el angulo coincida con la direccion
-            self.get_logger().info('Girando...')
-            while pointing_at_goal == False:
+            
+            while pointing_at_goal == False and close_to_goal == False:
                
-                
-                # VER LO DE LOS ANGULOS MAYORES O MENORES DE 180, PARA DONDE CONVIENE GIRAR
-                # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
-                if goal_angle < pos1.angle:
-                    response = self.set_speeds_client.send_request(2, -TURN_SPEED , TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
-                # Sino, girar a la izquierda    
+                self.get_logger().info('Girando...')
+                # giro antihorario
+                if angle_difference > 0:
+                    response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+                # giro horario    
+                elif angle_difference < 0:
+                    response = self.set_speeds_client.send_request(2, -TURN_SPEED, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+                # no girar
                 else:
-                    response = self.set_speeds_client.send_request(2, TURN_SPEED, -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
-                
+                    response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
+                    
                 #Actualizar ángulo
-                angle_difference = abs(pos1.angle - goal_angle)
+                dx = goal_handle.request.goal_x - pos1.x
+                dy = goal_handle.request.goal_y - pos1.y
+                    
+                goal_angle = self.getAngle(dx, dy)
+                angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
 
                 #Publicar ángulo
                 feedback_msg.partial_angle = angle_difference
                 #self.get_logger().info('Robot Angle: {0}'.format(pos1.angle))
                 #self.get_logger().info('Goal Angle: {0}'.format(goal_angle))
-                #self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
+                self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
                 #goal_handle.publish_feedback(feedback_msg)
                 
                 #Chequear si está apuntando en la dirección correcta
-                pointing_at_goal =  angle_difference < ANGLE_TOLERANCE
+                pointing_at_goal =  angle_difference == 0
                 
                 #Hacer un ajuste más fino
                 #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
@@ -181,20 +205,22 @@ class GoToXYActionServer(Node):
                 
                 #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
                 #time.sleep(1/fps - TURN_PULSE_MS/1000)
-                time.sleep(1/fps) 
             
-            # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)
+            time.sleep(1/fps) 
+
+            # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
             self.get_logger().info('Avanzando...')
-            # VER LO DE LOS ANGULOS MAYORES O MENORES DE 180, PARA DONDE CONVIENE GIRAR
-            # Si el angulo de la meta es mayor que al que está apuntando el robot, girar a la derecha (sentido antihorario)
-            distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
-            if ( distance_to_goal > MIN_DISTANCE):
-                    response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
-            else:
-                close_to_goal = True
             
+            distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
+            close_to_goal = distance_to_goal < MIN_DISTANCE
+            if ( not close_to_goal):
+                response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
+
+            self.get_logger().info('Distance: {0}'.format(distance_to_goal))
+            time.sleep(1/fps) 
+
             #Publicar distancia
-            feedback_msg.partial_x = pos1.x
+            #feedback_msg.partial_x = pos1.x
             #self.get_logger().info('Distance X: {0}'.format(pos1.x - goal_handle.request.goal_x))
             #self.get_logger().info('Distance Y: {0}'.format(pos1.y - goal_handle.request.goal_y))
             #goal_handle.publish_feedback(feedback_msg)
@@ -221,9 +247,9 @@ class GoToXYActionServer(Node):
 
         result = GoToXY.Result()
 #        result.final_id = feedback_msg.partial_id
-        result.final_x = feedback_msg.partial_x
-        result.final_y = feedback_msg.partial_y
-        result.final_angle = feedback_msg.partial_angle
+        result.final_x = pos1.x
+        result.final_y = pos1.y
+        #result.final_angle = feedback_msg.partial_angle
         return result
 
 

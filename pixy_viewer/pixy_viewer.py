@@ -91,9 +91,9 @@ while 1:
                 if sig == 1:
                     sig_color = 'green'
                 elif sig == 2:
-                    sig_color = 'yellow'
-                elif sig == 3:
                     sig_color = 'red'
+                elif sig == 3:
+                    sig_color = 'yellow'
                 elif sig == 4:
                     sig_color = 'blue'
                 else:

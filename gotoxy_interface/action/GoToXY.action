@@ -1,14 +1,14 @@
 # Request
 uint16 goal_x
 uint8 goal_y
-uint16 goal_angle
+int16 goal_angle
 ---
 # Result
 uint16 final_x
 uint8 final_y
-uint16 final_angle
+int16 final_angle
 ---
 # Feedback
 uint16 partial_x
 uint8 partial_y
-uint16 partial_angle
+int16 partial_angle

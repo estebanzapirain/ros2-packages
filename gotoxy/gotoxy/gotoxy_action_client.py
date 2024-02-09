@@ -33,7 +33,7 @@ class GoToXYClient(Node):
         goal_msg = GoToXY.Goal()
         goal_msg.goal_x = x
         goal_msg.goal_y = y
-        goal_msg.angle = angle
+        goal_msg.goal_angle = angle
 
         self._action_client.wait_for_server()
 
@@ -58,7 +58,8 @@ class GoToXYClient(Node):
 
     def get_result_callback(self, future):
         result = future.result().result
-        self.get_logger().info('Result: {0}'.format(result.final_x))
+        self.get_logger().info('FinalX: {0}'.format(result.final_x))
+        self.get_logger().info('FinalY: {0}'.format(result.final_y))
         rclpy.shutdown()
 
     def feedback_callback(self, feedback_msg):
