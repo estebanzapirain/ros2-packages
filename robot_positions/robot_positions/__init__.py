@@ -117,9 +117,9 @@ class Publisher(Node):
             if dx**2 + dy**2<30**2:
                 msg.angle = self.getAngle(dx, dy)
             
-                self.get_logger().info('dx: {0}'.format(dx))
-                self.get_logger().info('dy: {0}'.format(dy))
-                self.get_logger().info('angle: {0}'.format(msg.angle))
+                #self.get_logger().info('dx: {0}'.format(dx))
+                #self.get_logger().info('dy: {0}'.format(dy))
+                #self.get_logger().info('angle: {0}'.format(msg.angle))
                 msg.robot_id = 1
                 msg.frame = msg1.frame
 		    
@@ -127,7 +127,7 @@ class Publisher(Node):
 	    #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
                 self.publisher_.publish(msg)
 	
-                self.get_logger().info('Robot: "%s"' % msg)
+                #self.get_logger().info('Robot: "%s"' % msg)
 
 
 def main(args=None):

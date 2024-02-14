@@ -3,13 +3,14 @@
 <package format="3">
   <name>goal_updater</name>
   <version>0.0.1</version>
-  <description>Publish goals to map, so they can be visible in map_viewer</description>
+  <description>Get map and publish robot positions</description>
   <maintainer email="estebanzapirain@gmail.com">robot1</maintainer>
-  <license>Apache 2.0</license>
-
+  <license>Apache 2</license>
+  
   <exec_depend>map_interface</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>threading</exec_depend>
+  
   
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

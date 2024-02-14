@@ -38,7 +38,7 @@ class MinimalService(Node):
         #self.get_logger().info(comando)
         if valor == "OK":
                 response.ok = 1
-        self.get_logger().info('ID: %d Velocidades Izquierda: %d Derecha: %d Tiempo: %d' % (request.id, request.left, request.right, request.time))
+        #self.get_logger().info('ID: %d Velocidades Izquierda: %d Derecha: %d Tiempo: %d' % (request.id, request.left, request.right, request.time))
 
         return response
 

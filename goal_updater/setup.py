@@ -15,12 +15,12 @@ setup(
     zip_safe=True,
     maintainer='robot1',
     maintainer_email='estebanzapirain@gmail.com',
-    description='Publish goals to map, so they can be visible in map_viewer',
-    license='Apache 2.0',
+    description='Gets map of objects and returns robot position and facing angle',
+    license='Apache 2',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'goal_upd = goal_updater.__init__:main',  
+        'goal_upd = goal_updater.__init__:main',        
         ],
     },
 )

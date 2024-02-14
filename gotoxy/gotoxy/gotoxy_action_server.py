@@ -169,7 +169,7 @@ class GoToXYActionServer(Node):
             
             while pointing_at_goal == False and close_to_goal == False:
                
-                self.get_logger().info('Girando...')
+                #self.get_logger().info('Girando...')
                 # giro antihorario
                 if angle_difference > 0:
                     response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
@@ -191,7 +191,7 @@ class GoToXYActionServer(Node):
                 feedback_msg.partial_angle = angle_difference
                 #self.get_logger().info('Robot Angle: {0}'.format(pos1.angle))
                 #self.get_logger().info('Goal Angle: {0}'.format(goal_angle))
-                self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
+                #self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
                 #goal_handle.publish_feedback(feedback_msg)
                 
                 #Chequear si está apuntando en la dirección correcta

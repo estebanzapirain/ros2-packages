@@ -1,6 +1,6 @@
 ############################################################
 #
-# ROS Package: robot_positions
+# ROS Package: goal_updater
 # Node type: subscriber to topic "goal", publisher to topic "map"
 
 # Objective: publish goals to map, so they can be visible in map_viewer
@@ -77,7 +77,7 @@ class Publisher(Node):
    #Publish
             #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
             self.publisher_.publish(msg)
-            self.get_logger().info('Robot: "%s"' % msg)
+            #self.get_logger().info('Goal: "%s"' % msg)
 
 
 def main(args=None):

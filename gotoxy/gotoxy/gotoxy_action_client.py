@@ -23,9 +23,16 @@ import sys
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
+import threading
+import time
 
 #update rate
 fps = 10
+
+#init variables
+goal_x = 0
+goal_y = 0
+goal_angle = 0
 
 class GoToXYClient(Node):
 
@@ -95,23 +102,21 @@ class GoalPublisher(Node):
         #Publish
 	#print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
         self.publisher_.publish(msg)
-        self.get_logger().info('Goal: "%s"' % msg)
+        #self.get_logger().info('Goal: "%s"' % msg)
 
 
 def main(args=None):
+    global goal_x, goal_y, goal_angle
+    
     rclpy.init(args=args)
-
-   #Start nodes 
-    action_client = GoToXYClient()
-    goal_publisher = GoalPublisher()
     
     goal_x = int(sys.argv[1])
     goal_y = int(sys.argv[2])
     goal_angle = int(sys.argv[3])
     
-    action_client.send_goal(goal_x, goal_y, goal_angle)
-
-    rclpy.spin(action_client)
+   #Start nodes 
+    action_client = GoToXYClient()
+    goal_publisher = GoalPublisher()
 
     #Executor
     executor = rclpy.executors.MultiThreadedExecutor()
@@ -123,6 +128,14 @@ def main(args=None):
     
     
     rate = goal_publisher.create_rate(fps)
+    
+
+    
+    action_client.send_goal(goal_x, goal_y, goal_angle)
+
+    rclpy.spin(action_client)
+
+
     try:
         while rclpy.ok():
             #print('Help me body, you are my only hope')
