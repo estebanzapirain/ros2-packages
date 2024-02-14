@@ -13,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from gotoxy_interface.action import GoToXY
+# import interfaces
+from gotoxy_interface.action import GoToXY #Gotoxy client
+from map_interface.msg import Goal #goal pubisher
 
 # to get arguments from system
 import sys
@@ -22,6 +24,8 @@ import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
 
+#update rate
+fps = 10
 
 class GoToXYClient(Node):
 
@@ -66,11 +70,40 @@ class GoToXYClient(Node):
         feedback = feedback_msg.feedback
         self.get_logger().info('Received feedback: {0}'.format(feedback.partial_angle))
 
+#Publisher to topic "robot_pos", informs (x,y) and angle of robots in each frame
+class GoalPublisher(Node):
+
+    def __init__(self):
+        super().__init__('goal_publisher')
+ 
+        self.publisher_ = self.create_publisher(Goal, 'goal', 10) # (message, topic, queue_size)
+ 
+        timer_period = 1/fps
+        print(timer_period)
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+    def timer_callback(self):
+        global goal_x, goal_y, goal_angle
+        
+        #Init new mesagge
+        msg = Goal()
+        #if MapSubscriber got new data from a robot
+        msg.x = goal_x
+        msg.y = goal_y
+        msg.angle = goal_angle
+        
+        #Publish
+	#print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
+        self.publisher_.publish(msg)
+        self.get_logger().info('Goal: "%s"' % msg)
+
 
 def main(args=None):
     rclpy.init(args=args)
 
+   #Start nodes 
     action_client = GoToXYClient()
+    goal_publisher = GoalPublisher()
     
     goal_x = int(sys.argv[1])
     goal_y = int(sys.argv[2])
@@ -80,6 +113,22 @@ def main(args=None):
 
     rclpy.spin(action_client)
 
-
+    #Executor
+    executor = rclpy.executors.MultiThreadedExecutor()
+    executor.add_node(action_client)
+    executor.add_node(goal_publisher)
+    # Spin in a separate thread
+    executor_thread = threading.Thread(target=executor.spin, daemon=True)
+    executor_thread.start()
+    
+    
+    rate = goal_publisher.create_rate(fps)
+    try:
+        while rclpy.ok():
+            #print('Help me body, you are my only hope')
+            rate.sleep()
+    except KeyboardInterrupt:
+        pass
+        
 if __name__ == '__main__':
     main()

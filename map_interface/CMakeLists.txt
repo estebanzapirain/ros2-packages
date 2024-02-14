@@ -23,5 +23,6 @@ endif()
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Block.msg"
+  "msg/Goal.msg"
 )
 ament_package()

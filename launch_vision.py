@@ -15,7 +15,12 @@ def generate_launch_description():
         package="robot_positions",
         executable="robot_pos_updater"
     )
+    node4 = Node(
+        package="goal_updater",
+        executable="goal_upd"
+    )
     ld.add_action(node1)
     ld.add_action(node2)
     ld.add_action(node3)
+    ld.add_action(node4)
     return ld
