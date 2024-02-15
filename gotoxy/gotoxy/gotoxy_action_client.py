@@ -46,6 +46,8 @@ class GoToXYClient(Node):
         goal_msg.goal_y = y
         goal_msg.goal_angle = angle
 
+        self.get_logger().info('GoalY: {0}'.format(y)) #DEBUG
+
         self._action_client.wait_for_server()
 
         self._send_goal_future = self._action_client.send_goal_async(

@@ -17,23 +17,23 @@ from gotoxy_interface.action import GoToXY
 from pwm_interface.srv import SetSpeedsT
 
 #Frames per second
-fps = 5
+fps = 10
 
 #Tolerance for angles (degrees)
 ANGLE_TOLERANCE = 20
 
 #Tolerance for distance (pixels)
-MIN_DISTANCE = 40
+MIN_DISTANCE = 30
 
 #Velocidad de giro
 TURN_SPEED = 100
 
 #Velocidad de avance
-TRAVEL_SPEED = 100
+TRAVEL_SPEED = 120
 
 #Duración del pulso de giro
-TURN_MS = 50
-TRAVEL_MS = 50
+TURN_MS = 8
+TRAVEL_MS = 100
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -172,10 +172,10 @@ class GoToXYActionServer(Node):
                 #self.get_logger().info('Girando...')
                 # giro antihorario
                 if angle_difference > 0:
-                    response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+                    response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED - 20, TURN_MS) #id, vel_izq, vel_der, tiempo
                 # giro horario    
                 elif angle_difference < 0:
-                    response = self.set_speeds_client.send_request(2, -TURN_SPEED, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+                    response = self.set_speeds_client.send_request(2, -TURN_SPEED - 20, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
                 # no girar
                 else:
                     response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
@@ -196,6 +196,11 @@ class GoToXYActionServer(Node):
                 
                 #Chequear si está apuntando en la dirección correcta
                 pointing_at_goal =  angle_difference == 0
+                
+                #Chequear si esta cerca de la meta
+                distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
+                close_to_goal = distance_to_goal < MIN_DISTANCE
+                
                 
                 #Hacer un ajuste más fino
                 #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
