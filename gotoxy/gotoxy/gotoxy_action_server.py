@@ -139,7 +139,8 @@ class GoToXYActionServer(Node):
         else:
             return 0
 
-     
+    def UpdateAngle(self, ):
+        
     def execute_callback(self, goal_handle):
         
         global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, new_data
@@ -161,14 +162,13 @@ class GoToXYActionServer(Node):
 
         #calcular la direccion a la que se tiene que mover direccion = arctan((goal_y-y)/(goal_x-x))
         dx = goal_handle.request.goal_x - pos1.x
-        dy = goal_handle.request.goal_y - pos1.y
-                    
+        dy = goal_handle.request.goal_y - pos1.y            
         goal_angle = self.getAngle(dx, dy)
        
         while close_to_goal == False:
             
+            # Verificar si coincide el ángulo
             angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
-            
             pointing_at_goal =  angle_difference == 0
                 
         # 1- girar hasta que el angulo coincida con la direccion
@@ -178,7 +178,8 @@ class GoToXYActionServer(Node):
                 if new_data:
                     new_data = False
                     self.get_logger().info('Girando...')
-                    # giro antihorario
+                   
+                   # giro antihorario
                     if angle_difference > 0:
                         response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED - 20, TURN_MS) #id, vel_izq, vel_der, tiempo
                     # giro horario    
@@ -189,11 +190,7 @@ class GoToXYActionServer(Node):
                         response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
                         
                     #Actualizar ángulo
-                    dx = goal_handle.request.goal_x - pos1.x
-                    dy = goal_handle.request.goal_y - pos1.y
-                        
-                    goal_angle = self.getAngle(dx, dy)
-                    angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
+
                     self.get_logger().info('Angle Difference: {0}'.format(angle_difference))
 
                     #Publicar ángulo
@@ -270,20 +267,17 @@ class GoToXYActionServer(Node):
 
 
 def main(args=None):
-    
 
     rclpy.init(args=args)
     
     #Definicion de los nodos
     gotoxy_action_server = GoToXYActionServer()
     robot_pos_subscriber = RobotPosSubscriber()
-#     set_speeds_client = SetSpeedsClient()
     
     #Ejecución multi-nodo
     executor = rclpy.executors.MultiThreadedExecutor()
     executor.add_node(gotoxy_action_server)
     executor.add_node(robot_pos_subscriber)
-    #executor.add_node(set_speeds_client)    
    
     # Spin in a separate thread
     executor_thread = threading.Thread(target=executor.spin, daemon=True)
@@ -293,16 +287,9 @@ def main(args=None):
     
     try:
         while rclpy.ok():
-            #print('Help me body, you are my only hope')
             rate.sleep()
     except KeyboardInterrupt:
         pass
     
-#     try:
-#         rclpy.spin(gotoxy_action_server)
-#     except KeyboardInterrupt:
-#         pass
-
-
 if __name__ == '__main__':
     main()
