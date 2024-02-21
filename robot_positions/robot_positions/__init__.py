@@ -24,8 +24,14 @@ from robot_pos_interface.msg import RobotPosition
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
 
+#Máximo desfasaje en frames para considerar válidos los datos del robot
+MAX_FRAME_DELAY = 20
+
+# Distancia a la que se considera que los puntos medios de dos rectángulos corresponden a un robot
+MAX_DISTANCE = 30
+
 #frames per second
-fps = 10
+fps = 20
 
 #Init variables
 msg1 = Block()
@@ -55,7 +61,8 @@ class MapSubscriber(Node):
             msg2 = msg
         
         #if both msg1 and msg2 belong to same frame, we got new data and enable publishing
-        if (msg1.frame == msg2.frame):
+#        if (msg1.frame == msg2.frame):
+        if abs(msg1.frame - msg2.frame)<=MAX_FRAME_DELAY:
             new_data = True
             
 #Publisher to topic "robot_pos", informs (x,y) and angle of robots in each frame
@@ -114,7 +121,7 @@ class Publisher(Node):
             dy = msg2.y - msg1.y
             
             #only update if both signatures are close
-            if dx**2 + dy**2<30**2:
+            if dx**2 + dy**2<MAX_DISTANCE**2:
                 msg.angle = self.getAngle(dx, dy)
             
                 #self.get_logger().info('dx: {0}'.format(dx))
@@ -124,10 +131,10 @@ class Publisher(Node):
                 msg.frame = msg1.frame
 		    
 	    #Publish
-	    #print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
+                print(msg.robot_id, msg.frame, msg.x, msg.y, msg.angle)
                 self.publisher_.publish(msg)
 	
-                #self.get_logger().info('Robot: "%s"' % msg)
+                self.get_logger().info('Robot: "%s"' % msg)
 
 
 def main(args=None):

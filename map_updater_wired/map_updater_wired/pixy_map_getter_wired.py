@@ -39,7 +39,7 @@ MIN_SIZE = 0
 frame = 0
 
 #frames per second
-fps = 10
+fps = 20
 
 class Publisher(Node):
 

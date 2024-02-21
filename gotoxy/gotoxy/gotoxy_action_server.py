@@ -23,7 +23,8 @@ fps = 10
 ANGLE_TOLERANCE = 20
 
 #Tolerance for distance (pixels)
-MIN_DISTANCE = 30
+MIN_DISTANCE = 20
+CLOSE = 60
 
 #Velocidad de giro
 TURN_SPEED = 100
@@ -32,8 +33,8 @@ TURN_SPEED = 100
 TRAVEL_SPEED = 120
 
 #Duración del pulso de giro
-TURN_MS = 8
-TRAVEL_MS = 100
+TURN_MS = 50
+
 
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
@@ -44,6 +45,7 @@ YM = 120
 
 #Variables
 pos1 = RobotPosition() #robot 1 position: frame, robot_id, x, y, angle
+new_data = False
 
 #ROBOT POS SUBSCRIBER
 class RobotPosSubscriber(Node):
@@ -59,11 +61,13 @@ class RobotPosSubscriber(Node):
 
     def listener_callback(self, msg):
         #global variables
-        global pos1
+        global pos1, new_data
         
         #Guardo los datos del robot
         if msg.robot_id == 1:
             pos1 = msg
+            new_data = True
+            #self.get_logger().info('New data')
 
             
 # SET SPEEDS CLIENT
@@ -96,6 +100,7 @@ class GoToXYActionServer(Node):
             'gotoxy',
             self.execute_callback)
         self.set_speeds_client = SetSpeedsClient()
+        
     
     #retorna ángulo en grados
     def getAngle(self,dx,dy):
@@ -137,7 +142,7 @@ class GoToXYActionServer(Node):
      
     def execute_callback(self, goal_handle):
         
-        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED
+        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, new_data
         
         #Empieza a procesar la meta
         self.get_logger().info('Executing goal...')
@@ -147,6 +152,7 @@ class GoToXYActionServer(Node):
         pointing_at_goal = False
         close_to_goal = False
         done = False
+        TRAVEL_MS = 120 # velocidad inicial de avance
         
         # En pos1 está la posición del robot1
         feedback_msg.partial_x = pos1.x 
@@ -169,61 +175,66 @@ class GoToXYActionServer(Node):
             
             while pointing_at_goal == False and close_to_goal == False:
                
-                #self.get_logger().info('Girando...')
-                # giro antihorario
-                if angle_difference > 0:
-                    response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED - 20, TURN_MS) #id, vel_izq, vel_der, tiempo
-                # giro horario    
-                elif angle_difference < 0:
-                    response = self.set_speeds_client.send_request(2, -TURN_SPEED - 20, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
-                # no girar
-                else:
-                    response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
-                    
-                #Actualizar ángulo
-                dx = goal_handle.request.goal_x - pos1.x
-                dy = goal_handle.request.goal_y - pos1.y
-                    
-                goal_angle = self.getAngle(dx, dy)
-                angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
+                if new_data:
+                    new_data = False
+                    self.get_logger().info('Girando...')
+                    # giro antihorario
+                    if angle_difference > 0:
+                        response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED - 20, TURN_MS) #id, vel_izq, vel_der, tiempo
+                    # giro horario    
+                    elif angle_difference < 0:
+                        response = self.set_speeds_client.send_request(2, -TURN_SPEED - 20, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+                    # no girar
+                    else:
+                        response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
+                        
+                    #Actualizar ángulo
+                    dx = goal_handle.request.goal_x - pos1.x
+                    dy = goal_handle.request.goal_y - pos1.y
+                        
+                    goal_angle = self.getAngle(dx, dy)
+                    angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
+                    self.get_logger().info('Angle Difference: {0}'.format(angle_difference))
 
-                #Publicar ángulo
-                feedback_msg.partial_angle = angle_difference
-                #self.get_logger().info('Robot Angle: {0}'.format(pos1.angle))
-                #self.get_logger().info('Goal Angle: {0}'.format(goal_angle))
-                #self.get_logger().info('Angle Difference: {0}'.format(feedback_msg.partial_angle))
-                #goal_handle.publish_feedback(feedback_msg)
-                
-                #Chequear si está apuntando en la dirección correcta
-                pointing_at_goal =  angle_difference == 0
-                
-                #Chequear si esta cerca de la meta
-                distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
-                close_to_goal = distance_to_goal < MIN_DISTANCE
-                
-                
-                #Hacer un ajuste más fino
-                #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
-                #    TURN_SPEED = TURN_SPEED - 5
-                #    ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
-                #    pointing_at_goal = False         
-                
-                #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
-                #time.sleep(1/fps - TURN_PULSE_MS/1000)
+                    #Publicar ángulo
+                    feedback_msg.partial_angle = angle_difference
+                    #goal_handle.publish_feedback(feedback_msg)
+                    
+                    #Chequear si está apuntando en la dirección correcta
+                    pointing_at_goal =  angle_difference == 0
+                    
+                    #Chequear si esta cerca de la meta
+                    distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
+                    close_to_goal = distance_to_goal < MIN_DISTANCE
+                    
+                    
+                    #Hacer un ajuste más fino
+                    #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
+                    #    TURN_SPEED = TURN_SPEED - 5
+                    #    ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
+                    #    pointing_at_goal = False         
+                    
+                    #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
+                    #time.sleep(1/fps - TURN_PULSE_MS/1000)
             
             time.sleep(1/fps) 
 
             # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
-            self.get_logger().info('Avanzando...')
+            if new_data:
+                new_data = False
+                self.get_logger().info('Avanzando...')
+                
+                distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_y - pos1.y)**2)**0.5
+                self.get_logger().info('Distance: {0}'.format(distance_to_goal))
+                
+                close_to_goal = distance_to_goal < MIN_DISTANCE
+                if ( not close_to_goal):
+                    if distance_to_goal < CLOSE:
+                        TRAVEL_MS = TRAVEL_MS / 2
+                    response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
+
+                time.sleep(1/fps) 
             
-            distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
-            close_to_goal = distance_to_goal < MIN_DISTANCE
-            if ( not close_to_goal):
-                response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
-
-            self.get_logger().info('Distance: {0}'.format(distance_to_goal))
-            time.sleep(1/fps) 
-
             #Publicar distancia
             #feedback_msg.partial_x = pos1.x
             #self.get_logger().info('Distance X: {0}'.format(pos1.x - goal_handle.request.goal_x))
