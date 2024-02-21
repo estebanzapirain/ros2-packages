@@ -211,7 +211,7 @@ class GoToXYActionServer(Node):
                     #Hacer un ajuste más fino
                     #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
                     #    TURN_SPEED = TURN_SPEED - 5
-                    #    ANGLE_TOLERANCE = ANGLE_TOLERANCE / 2
+                    #    ANGLE_TOLERANCE = ANGLE_TOLERANCE // 2
                     #    pointing_at_goal = False         
                     
                     #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
@@ -230,7 +230,7 @@ class GoToXYActionServer(Node):
                 close_to_goal = distance_to_goal < MIN_DISTANCE
                 if ( not close_to_goal):
                     if distance_to_goal < CLOSE:
-                        TRAVEL_MS = TRAVEL_MS / 2
+                        TRAVEL_MS = 60
                     response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
 
                 time.sleep(1/fps) 
