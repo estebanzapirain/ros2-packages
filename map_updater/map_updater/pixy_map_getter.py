@@ -33,7 +33,7 @@ BLOCK_LENGTH = 6
 BLOCKS_EXPECTED = 4
 
 #Minimum block size to assume data is valid
-MIN_SIZE = 0
+MIN_SIZE = 50
 
 #frame number
 frame = 0

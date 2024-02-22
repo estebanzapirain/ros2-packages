@@ -23,14 +23,16 @@ fps = 10
 ANGLE_TOLERANCE = 20
 
 #Tolerance for distance (pixels)
-MIN_DISTANCE = 20
-CLOSE = 60
+MIN_DISTANCE = 10
+NEAR_GOAL = 60
+NEAR_WALL = 20
 
 #Velocidad de giro
-TURN_SPEED = 100
+TURN_SPEED = 120
 
 #Velocidad de avance
 TRAVEL_SPEED = 120
+REVERSE_SPEED = -120
 
 #Duración del pulso de giro
 TURN_MS = 50
@@ -39,9 +41,13 @@ TURN_MS = 50
 #Conversión de radianes a grados
 RAD2GRAD = 180/np.pi
 
+#Medidas de la imagen
+IMAGE_W = 320
+IMAGE_H = 240
+
 #Punto medio
-XM = 160
-YM = 120
+XM = IMAGE_W // 2
+YM = IMAGE_H // 2
 
 #Variables
 pos1 = RobotPosition() #robot 1 position: frame, robot_id, x, y, angle
@@ -139,11 +145,39 @@ class GoToXYActionServer(Node):
         else:
             return 0
 
-    def UpdateAngle(self, ):
+    def UpdateAngleDifference(self, goal_handle, pos):
+        dx = goal_handle.request.goal_x - pos.x
+        dy = goal_handle.request.goal_y - pos.y
+        goal_angle = self.getAngle(dx, dy)
+        return self.GetAngleDifference(goal_angle, pos.angle)
+
+    def Turn(self, angle_difference, TURN_SPEED, TURN_MS):
+        # giro antihorario
+        if angle_difference > 0:
+            response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+        # giro horario    
+        elif angle_difference < 0:
+            response = self.set_speeds_client.send_request(2, -TURN_SPEED, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
+        # no girar
+        else:
+            response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
+        return 0
+    
+    def CalcDistance(self, goal_handle, pos):
+        distance = ((goal_handle.request.goal_x - pos.x)**2 + (goal_handle.request.goal_y - pos.y)**2)**0.5
+        return distance
+    
+    def IsNearWall(self, pos, NEAR_WALL, IMAGE_W, IMAGE_H):
         
+        near_west = (pos.x < NEAR_WALL) and (pos.angle>=135 and pos.angle<225)
+        near_east = (pos.x > IMAGE_W - NEAR_WALL) and (pos.angle<45 or pos.angle>=315)
+        near_south = (pos.y < NEAR_WALL) and (pos.angle>=225 or pos.angle<315)
+        near_north = (pos.y > IMAGE_H - NEAR_WALL) and (pos.angle>=45 and pos.angle<135)
+        return near_west or near_east or near_north or near_south
+    
     def execute_callback(self, goal_handle):
         
-        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, new_data
+        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, REVERSE_SPEED, TURN_MS, new_data
         
         #Empieza a procesar la meta
         self.get_logger().info('Executing goal...')
@@ -155,22 +189,11 @@ class GoToXYActionServer(Node):
         done = False
         TRAVEL_MS = 120 # velocidad inicial de avance
         
-        # En pos1 está la posición del robot1
-        feedback_msg.partial_x = pos1.x 
-        feedback_msg.partial_y = pos1.y
-        feedback_msg.partial_angle = pos1.angle        
-
-        #calcular la direccion a la que se tiene que mover direccion = arctan((goal_y-y)/(goal_x-x))
-        dx = goal_handle.request.goal_x - pos1.x
-        dy = goal_handle.request.goal_y - pos1.y            
-        goal_angle = self.getAngle(dx, dy)
-       
         while close_to_goal == False:
             
-            # Verificar si coincide el ángulo
-            angle_difference = self.GetAngleDifference(goal_angle, pos1.angle)
-            pointing_at_goal =  angle_difference == 0
-                
+            angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
+            pointing_at_goal = angle_difference == 0
+                        
         # 1- girar hasta que el angulo coincida con la direccion
             
             while pointing_at_goal == False and close_to_goal == False:
@@ -178,84 +201,60 @@ class GoToXYActionServer(Node):
                 if new_data:
                     new_data = False
                     self.get_logger().info('Girando...')
-                   
-                   # giro antihorario
-                    if angle_difference > 0:
-                        response = self.set_speeds_client.send_request(2, TURN_SPEED , -TURN_SPEED - 20, TURN_MS) #id, vel_izq, vel_der, tiempo
-                    # giro horario    
-                    elif angle_difference < 0:
-                        response = self.set_speeds_client.send_request(2, -TURN_SPEED - 20, TURN_SPEED, TURN_MS) #id, vel_izq, vel_der, tiempo
-                    # no girar
-                    else:
-                        response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
-                        
+                    
+                    # Girar de acuerdo al ángulo
+                    self.Turn(angle_difference, TURN_SPEED, TURN_MS)
+                    
+                    # Chequear si no está contra una pared
+                    if self.IsNearWall(pos1, NEAR_WALL, IMAGE_W, IMAGE_H):
+                        response = self.set_speeds_client.send_request(2, REVERSE_SPEED , REVERSE_SPEED, TRAVEL_MS)  
+                        self.get_logger().info('De reversa: speed= {0}'.format(REVERSE_SPEED))
                     #Actualizar ángulo
-
+                    angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
                     self.get_logger().info('Angle Difference: {0}'.format(angle_difference))
 
-                    #Publicar ángulo
-                    feedback_msg.partial_angle = angle_difference
-                    #goal_handle.publish_feedback(feedback_msg)
-                    
                     #Chequear si está apuntando en la dirección correcta
-                    pointing_at_goal =  angle_difference == 0
+                    pointing_at_goal = angle_difference == 0
                     
                     #Chequear si esta cerca de la meta
-                    distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_x - pos1.y)**2)**0.5
+                    distance_to_goal = self.CalcDistance(goal_handle, pos1)
                     close_to_goal = distance_to_goal < MIN_DISTANCE
                     
-                    
-                    #Hacer un ajuste más fino
-                    #if pointing_at_goal & (ANGLE_TOLERANCE > 5):
-                    #    TURN_SPEED = TURN_SPEED - 5
-                    #    ANGLE_TOLERANCE = ANGLE_TOLERANCE // 2
-                    #    pointing_at_goal = False         
-                    
-                    #Esperar durante el tiempo de actualización, restándole el tiempo del pulso
-                    #time.sleep(1/fps - TURN_PULSE_MS/1000)
-            
-            time.sleep(1/fps) 
+                    time.sleep(1/fps) 
 
             # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
             if new_data:
                 new_data = False
                 self.get_logger().info('Avanzando...')
                 
-                distance_to_goal = ((goal_handle.request.goal_x - pos1.x)**2 + (goal_handle.request.goal_y - pos1.y)**2)**0.5
+                distance_to_goal = self.CalcDistance(goal_handle, pos1)
+                close_to_goal = distance_to_goal < MIN_DISTANCE
+               
                 self.get_logger().info('Distance: {0}'.format(distance_to_goal))
                 
-                close_to_goal = distance_to_goal < MIN_DISTANCE
                 if ( not close_to_goal):
-                    if distance_to_goal < CLOSE:
+                    if distance_to_goal < NEAR_GOAL:
                         TRAVEL_MS = 60
+                        TURN_MS = 30
                     response = self.set_speeds_client.send_request(2, TRAVEL_SPEED , TRAVEL_SPEED, TRAVEL_MS) #id, vel_izq, vel_der, tiempo
-
+                    # Chequear si no está contra una pared
+                    if self.IsNearWall(pos1, NEAR_WALL, IMAGE_W, IMAGE_H):
+                        response = self.set_speeds_client.send_request(2, REVERSE_SPEED , REVERSE_SPEED, TRAVEL_MS)
+                        self.get_logger().info('De reversa: X={0} Y={1}'.format(pos1.x, pos1.y))
                 time.sleep(1/fps) 
             
-            #Publicar distancia
-            #feedback_msg.partial_x = pos1.x
-            #self.get_logger().info('Distance X: {0}'.format(pos1.x - goal_handle.request.goal_x))
-            #self.get_logger().info('Distance Y: {0}'.format(pos1.y - goal_handle.request.goal_y))
-            #goal_handle.publish_feedback(feedback_msg)
+            # 3- girar el angulo hasta que coincida con el goal_angle
+            goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
+            done = goal_angle_difference == 0
+            
+        while done == False:
+            self.Turn(goal_angle_difference, TURN_SPEED, TURN_MS)
+            time.sleep(1/fps)
+            goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
+            done = goal_angle_difference == 0       
+            self.get_logger().info('Goal Angle Difference: {0}'.format(goal_angle_difference))
 
-                     
         self.get_logger().info('Meta cumplida!')
-        # 3- girar el angulo hasta que coincida con el goal_angle
-        
-        
-        
-        # Acá hace todo
-        # Tiene que ir moviendo los motores y reportando feedback de la distancia al objetivo
-        # goal_handle.request.goal_x es la posicion destino
-         
- 
-#         while (feedback_msg.partial_x < goal_handle.request.goal_x):
-#         #Dar feedback de la posición actual del robot (o la distancia al destino)
-#                 feedback_msg.partial_x = feedback_msg.partial_x + 1
-#                 self.get_logger().info('Feedback: {0}'.format(feedback_msg.partial_x))
-#                 goal_handle.publish_feedback(feedback_msg)
-#                 time.sleep(1/fps)
-
         goal_handle.succeed()
 
         result = GoToXY.Result()

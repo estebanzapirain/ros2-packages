@@ -16,6 +16,9 @@ h = 480
 scale = w / 320 #Scale factor relative to 320x240
 frame = 0
 
+#Máximo desfasaje en frames para considerar que los objetos son de un mismo frame
+MAX_FRAME_DELAY = 2
+
 # Create a Canvas widget
 canvas_1 = tk.Canvas(window, width=w, height=h)
 canvas_1.pack()
@@ -28,21 +31,14 @@ class MapSubscriber(Node):
             Block,
             'map',
             self.listener_callback,
-            10)
+            50)
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
         global frame
-        if msg.frame != frame:
+        if abs(msg.frame - frame) > MAX_FRAME_DELAY:
             canvas_1.delete('all') #clear canvas
             frame = msg.frame
-            
-        #self.get_logger().info('frame= "%d"' % msg.frame)        
-        #self.get_logger().info('sig= "%d"' % msg.sig)
-#         self.get_logger().info('x= "%d"' % msg.x)
-#         self.get_logger().info('y= "%d"' % msg.y)
-#         self.get_logger().info('width= "%d"' % msg.width)
-#         self.get_logger().info('height= "%d"' % msg.height)
 
         #get color fron signature
         if msg.sig == 1:
@@ -64,21 +60,23 @@ class MapSubscriber(Node):
         xc = scale * (msg.x + msg.width / 2)
         yc = scale * (msg.y + msg.height / 2)
         center = canvas_1.create_oval(xc - 1, yc - 1, xc + 1, yc + 1)
-
         #labels
         widget = tk.Label(canvas_1, text='(0,0)', fg='black')
         widget.pack()
-        canvas_1.create_window(0, 0, window=widget)  
+        canvas_1.create_window(0, 0, window=widget)
+      
     # UPDATE CANVAS
         window.update()
 
 def main(args=None):
+
+    
     rclpy.init(args=args)
 
     map_subscriber = MapSubscriber()
 
     rclpy.spin(map_subscriber)
-
+    
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
