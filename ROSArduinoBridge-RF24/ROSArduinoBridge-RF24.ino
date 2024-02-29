@@ -51,6 +51,8 @@
 #define USE_RF24        //Enable radio communications
 //#undef USE_RF24       //disable radio communications
 
+#define USE_SIGNAL_LED     // Enable signalling led
+
 /* Define the motor controller and encoder library you are using */
 #ifdef USE_BASE
    /* The Pololu VNH5019 dual motor driver shield */
@@ -124,7 +126,10 @@
   long lastMotorCommand = AUTO_STOP_INTERVAL;
 #endif
 
-
+#ifdef USE_SIGNAL_LED
+  /*  Led signal definitions*/
+  #include "led_signal.h"
+#endif
 
 
 /* Variable initialization */
@@ -148,6 +153,8 @@ char argv3[16];
 long arg1;
 long arg2;
 long arg3;
+
+
 
 /* Clear the current command parameters */
 void resetCommand() {
@@ -245,17 +252,6 @@ int runCommand() {
     Serial.print(arg2);
     Serial.println("OK"); 
     break;
-  case MOTOR_RAW_PWM_TIME: //t
-    /* Reset the auto stop timer */
-    lastMotorCommand = millis();
-    resetPID();
-    moving = 0; // Sneaky way to temporarily disable the PID
-    setMotorSpeedsT(arg1, arg2, arg3);
-    Serial.print(arg1);
-    Serial.print(arg2);
-    Serial.print(arg3);
-    Serial.println("OK"); 
-    break;
 
   case UPDATE_PID:
     while ((str = strtok_r(p, ":", &p)) != '\0') {
@@ -268,6 +264,39 @@ int runCommand() {
     Ko = pid_args[3];
     Serial.println("OK");
     break;
+
+    
+/***************************************************************
+                       Added commands
+  *************************************************************/
+  
+  case MOTOR_RAW_PWM_TIME: //t
+    /* Reset the auto stop timer */
+    lastMotorCommand = millis();
+    resetPID();
+    moving = 0; // Sneaky way to temporarily disable the PID
+    setMotorSpeedsT(arg1, arg2, arg3);
+    Serial.print(arg1);
+    Serial.print(arg2);
+    Serial.print(arg3);
+    Serial.println("OK"); 
+    break;
+
+  case LED_BLINK: //l
+    Serial.println("Blink!!!");
+    blinking = true;
+    pending_blinks = 2*arg1;  //the argument has to be doubled
+    blinks_interval = arg2;
+    last_blink = millis();
+    break;
+  
+/***************************************************************
+                       end Added commands
+  *************************************************************/
+
+
+  
+
 #endif
   default:
     Serial.println("Invalid Command");
@@ -319,6 +348,10 @@ void setup() {
 
   #ifdef USE_RF24
     RF24setup();
+  #endif
+
+  #ifdef USE_SIGNAL_LED
+    pinMode(LED_PORT,OUTPUT);
   #endif
 }
 
@@ -401,5 +434,11 @@ void loop() {
 
 #ifdef USE_RF24
   RF24loop();
+#endif
+
+#ifdef USE_SIGNAL_LED
+  if (blinking){
+    BlinkLoop();
+    }
 #endif
 }

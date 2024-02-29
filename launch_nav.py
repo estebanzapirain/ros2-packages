@@ -11,6 +11,12 @@ def generate_launch_description():
         package="gotoxy",
         executable="gotoxy_server"
     )
+    node3 = Node(
+        package="blinks",
+        executable="blinks_sv"
+    )
+    
     ld.add_action(node1)
     ld.add_action(node2)
+    ld.add_action(node3)
     return ld

@@ -12,7 +12,6 @@
 #define READ_ENCODERS  'e'
 #define MOTOR_SPEEDS   'm'
 #define MOTOR_RAW_PWM  'o'
-#define MOTOR_RAW_PWM_TIME  't'
 #define PING           'p'
 #define RESET_ENCODERS 'r'
 #define SERVO_WRITE    's'
@@ -22,5 +21,9 @@
 #define ANALOG_WRITE   'x'
 #define LEFT            0
 #define RIGHT           1
+
+//COMANDOS AGREGADOS
+#define MOTOR_RAW_PWM_TIME  't'
+#define LED_BLINK       'l'
 
 #endif
