@@ -222,7 +222,7 @@ class GoToXYActionServer(Node):
                     
                     time.sleep(1/fps) 
 
-            # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
+        # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
             if new_data:
                 new_data = False
                 self.get_logger().info('Avanzando...')
@@ -243,7 +243,7 @@ class GoToXYActionServer(Node):
                         self.get_logger().info('De reversa: X={0} Y={1}'.format(pos1.x, pos1.y))
                 time.sleep(1/fps) 
             
-            # 3- girar el angulo hasta que coincida con el goal_angle
+        # 3- girar el angulo hasta que coincida con el goal_angle
             goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
             done = goal_angle_difference == 0
             

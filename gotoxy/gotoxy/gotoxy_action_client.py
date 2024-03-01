@@ -15,7 +15,7 @@
 
 # import interfaces
 from gotoxy_interface.action import GoToXY #Gotoxy client
-from map_interface.msg import Goal #goal pubisher
+from map_interface.msg import Goal #goal publisher
 
 # to get arguments from system
 import sys
