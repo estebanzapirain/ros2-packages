@@ -19,6 +19,9 @@ frame = 0
 #Máximo desfasaje en frames para considerar que los objetos son de un mismo frame
 MAX_FRAME_DELAY = 2
 
+#Si la caja de la cámara está invertida con respecto al punto de vista
+INV_CAMERA = False
+
 # Create a Canvas widget
 canvas_1 = tk.Canvas(window, width=w, height=h)
 canvas_1.pack()
@@ -54,11 +57,22 @@ class MapSubscriber(Node):
  
 
         #draw rectangles
-        rectangle_1 = canvas_1.create_rectangle(scale * msg.x, scale * msg.y, scale * (msg.x + msg.width), scale * (msg.y + msg.height), fill = sig_color)
+        rectangle_x = scale * msg.x
+        rectangle_y = scale * msg.y
+        if INV_CAMERA:
+            rectangle_x = w - rectangle_x
+            rectangle_y = h - rectangle_y
+        
+        rectangle_1 = canvas_1.create_rectangle(rectangle_x, rectangle_y, rectangle_x + scale * msg.width, rectangle_y + scale * msg.height, fill = sig_color)
         
         #center point of rectangles
-        xc = scale * (msg.x + msg.width / 2)
-        yc = scale * (msg.y + msg.height / 2)
+        
+        xc = rectangle_x + scale * msg.width / 2
+        yc = rectangle_y + scale * msg.height / 2
+#        if INV_CAMERA:
+#            xc = w - xc
+#            yc = h - yc
+                
         center = canvas_1.create_oval(xc - 1, yc - 1, xc + 1, yc + 1)
         #labels
         widget = tk.Label(canvas_1, text='(0,0)', fg='black')

@@ -9,6 +9,8 @@ uint8 final_y
 int16 final_angle
 ---
 # Feedback
-uint16 partial_x
-uint8 partial_y
-int16 partial_angle
+uint16 robot_x
+uint8 robot_y
+int16 robot_angle
+uint16 distance_to_goal
+int16 angle_difference

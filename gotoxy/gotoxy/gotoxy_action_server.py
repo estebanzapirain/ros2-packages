@@ -10,6 +10,8 @@ import time
 import numpy as np
 import threading
 import sys
+import csv
+from datetime import datetime
 
 #ROS message interfaces
 from robot_pos_interface.msg import RobotPosition
@@ -175,13 +177,49 @@ class GoToXYActionServer(Node):
         near_north = (pos.y > IMAGE_H - NEAR_WALL) and (pos.angle>=45 and pos.angle<135)
         return near_west or near_east or near_north or near_south
     
+    def update_feedback(self, feedback_msg, goal_handle, pos):
+        feedback_msg.robot_x = pos1.x
+        feedback_msg.robot_y = pos1.y
+        feedback_msg.robot_angle = pos1.angle
+        feedback_msg.distance_to_goal = int(self.CalcDistance(goal_handle, pos1))
+        feedback_msg.angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
+        self.get_logger().info('Feedback: {0}'.format(feedback_msg))
+    
+    def update_log(self, filename, feedback_msg, state):
+        with open(filename,'a') as fd:
+            csvwriter = csv.writer(fd, delimiter ='|')
+            data = [feedback_msg.robot_x, feedback_msg.robot_y, feedback_msg.distance_to_goal, feedback_msg.robot_angle, feedback_msg.angle_difference, state]
+            csvwriter.writerow(data)
+            
     def execute_callback(self, goal_handle):
         
         global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, REVERSE_SPEED, TURN_MS, new_data
         
         #Empieza a procesar la meta
         self.get_logger().info('Executing goal...')
-        feedback_msg = GoToXY.Feedback()
+        
+        #Iniciar archivo de feedback
+        filename = "src/redros_logs/goal_logger" + str(datetime.now()) + ".csv"
+        
+        with open(filename, 'w') as csvfile:
+            csvwriter = csv.writer(csvfile, delimiter ='|')
+             # el encabezado del archivo son los datos de la meta
+            fields = ['goal_x', 'goal_y', 'goal_angle','robot_id','','']
+            data = [goal_handle.request.goal_x, goal_handle.request.goal_y, goal_handle.request.goal_angle, '1','','']
+            csvwriter.writerow(fields)
+            csvwriter.writerow(data)
+            
+            # encabezados de columna de datos
+            fields = ['robot_x', 'robot_y', 'distance_to_goal', 'robot_angle', 'angle_difference', 'step']
+            csvwriter.writerow(fields)
+            
+        #Feedback inicial
+        feedback_msg = GoToXY.Feedback() #inicializacion
+        
+        #datos iniciales
+        self.update_feedback(feedback_msg, goal_handle, pos1) 
+        self.update_log(filename, feedback_msg, '1')
+        
         
         # Indicadores de cumplimiento de la meta
         pointing_at_goal = False
@@ -190,7 +228,6 @@ class GoToXYActionServer(Node):
         TRAVEL_MS = 120 # velocidad inicial de avance
         
         while close_to_goal == False:
-            
             angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
             pointing_at_goal = angle_difference == 0
                         
@@ -220,6 +257,9 @@ class GoToXYActionServer(Node):
                     distance_to_goal = self.CalcDistance(goal_handle, pos1)
                     close_to_goal = distance_to_goal < MIN_DISTANCE
                     
+                    self.update_feedback(feedback_msg, goal_handle, pos1) 
+                    self.update_log( filename, feedback_msg, '1')
+            
                     time.sleep(1/fps) 
 
         # 2- mover en linea recta hasta que la distancia sea 0 (o cerca)            
@@ -242,6 +282,8 @@ class GoToXYActionServer(Node):
                         response = self.set_speeds_client.send_request(2, REVERSE_SPEED , REVERSE_SPEED, TRAVEL_MS)
                         self.get_logger().info('De reversa: X={0} Y={1}'.format(pos1.x, pos1.y))
                 time.sleep(1/fps) 
+            self.update_feedback(feedback_msg, goal_handle, pos1) 
+            self.update_log(filename, feedback_msg, '2')
             
         # 3- girar el angulo hasta que coincida con el goal_angle
             goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
@@ -253,10 +295,15 @@ class GoToXYActionServer(Node):
             goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
             done = goal_angle_difference == 0       
             self.get_logger().info('Goal Angle Difference: {0}'.format(goal_angle_difference))
-
+            
+            self.update_feedback(feedback_msg, goal_handle, pos1) 
+            self.update_log(filename, feedback_msg, '3')
+                
         self.get_logger().info('Meta cumplida!')
         goal_handle.succeed()
-
+        self.update_feedback(feedback_msg, goal_handle, pos1) 
+        self.update_log(filename, feedback_msg, '4')
+        
         result = GoToXY.Result()
 #        result.final_id = feedback_msg.partial_id
         result.final_x = pos1.x
