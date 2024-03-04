@@ -53,7 +53,20 @@ YM = IMAGE_H // 2
 
 #Variables
 pos1 = RobotPosition() #robot 1 position: frame, robot_id, x, y, angle
-new_data = False
+new_data = False       #informa si hay nuevos datos de posición
+
+#Variables para estadistica
+st_steps = 0              #cantidad de pasos para el cumplimiento de una meta
+st_initial_distance = 0   #distancia entre la meta y la posición inicial 
+st_time = 0               #tiempo de procesamiento 
+#distancia recorrida
+st_distance = {
+    "x": 0,
+    "y": 0    
+    }
+first_pos = True
+prev_x = 0
+prev_y = 0
 
 #ROBOT POS SUBSCRIBER
 class RobotPosSubscriber(Node):
@@ -76,8 +89,8 @@ class RobotPosSubscriber(Node):
             pos1 = msg
             new_data = True
             #self.get_logger().info('New data')
-
             
+
 # SET SPEEDS CLIENT
 class SetSpeedsClient(Node):
 
@@ -131,7 +144,7 @@ class GoToXYActionServer(Node):
                 angle = 180
         return int(angle)
     
-    #retornar la diferencia entre ángulos. entre -180 (giro horario) y 180 (giro antihorario). 0 significa que está dentro de la tolerancia
+    # retornar la diferencia entre ángulos. entre -180 (giro horario) y 180 (giro antihorario). 0 significa que está dentro de la tolerancia
     def GetAngleDifference(self, goal_angle, robot_angle):
         angle_between = goal_angle - robot_angle
         if angle_between > ANGLE_TOLERANCE:
@@ -146,13 +159,15 @@ class GoToXYActionServer(Node):
                 return 360 + angle_between
         else:
             return 0
-
+    
+    # diferencia en grados entre el robot y la meta
     def UpdateAngleDifference(self, goal_handle, pos):
         dx = goal_handle.request.goal_x - pos.x
         dy = goal_handle.request.goal_y - pos.y
         goal_angle = self.getAngle(dx, dy)
         return self.GetAngleDifference(goal_angle, pos.angle)
 
+    # decidir el sentido de giro
     def Turn(self, angle_difference, TURN_SPEED, TURN_MS):
         # giro antihorario
         if angle_difference > 0:
@@ -165,18 +180,20 @@ class GoToXYActionServer(Node):
             response = self.set_speeds_client.send_request(2, 0, 0, 0) #id, vel_izq, vel_der, tiempo
         return 0
     
+    # calculo de la distancia a la meta
     def CalcDistance(self, goal_handle, pos):
         distance = ((goal_handle.request.goal_x - pos.x)**2 + (goal_handle.request.goal_y - pos.y)**2)**0.5
         return distance
     
+    # chequear si el robot está cerca de un borde    
     def IsNearWall(self, pos, NEAR_WALL, IMAGE_W, IMAGE_H):
-        
         near_west = (pos.x < NEAR_WALL) and (pos.angle>=135 and pos.angle<225)
         near_east = (pos.x > IMAGE_W - NEAR_WALL) and (pos.angle<45 or pos.angle>=315)
         near_south = (pos.y < NEAR_WALL) and (pos.angle>=225 or pos.angle<315)
         near_north = (pos.y > IMAGE_H - NEAR_WALL) and (pos.angle>=45 and pos.angle<135)
         return near_west or near_east or near_north or near_south
     
+    # actualizar el mensaje de feedback
     def update_feedback(self, feedback_msg, goal_handle, pos):
         feedback_msg.robot_x = pos1.x
         feedback_msg.robot_y = pos1.y
@@ -185,15 +202,26 @@ class GoToXYActionServer(Node):
         feedback_msg.angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
         self.get_logger().info('Feedback: {0}'.format(feedback_msg))
     
-    def update_log(self, filename, feedback_msg, state):
+    # actualizar el log
+    def update_log(self, filename, feedback_msg, state, pos):
+        global first_pos, prev_x, prev_y, st_distance
         with open(filename,'a') as fd:
             csvwriter = csv.writer(fd, delimiter ='|')
             data = [feedback_msg.robot_x, feedback_msg.robot_y, feedback_msg.distance_to_goal, feedback_msg.robot_angle, feedback_msg.angle_difference, state]
             csvwriter.writerow(data)
-            
+        #estadisticas
+        if first_pos:
+            first_pos = False
+            prev_x = pos1.x
+            prev_y = pos1.y
+        else:
+            st_distance["x"] += abs(pos.x - prev_x)
+            st_distance["y"] += abs(pos.y - prev_y)
+    
+    # función principal de procesamiento de meta
     def execute_callback(self, goal_handle):
         
-        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, REVERSE_SPEED, TURN_MS, new_data
+        global ANGLE_TOLERANCE, TURN_SPEED, TRAVEL_SPEED, REVERSE_SPEED, TURN_MS, new_data, st_distance
         
         #Empieza a procesar la meta
         self.get_logger().info('Executing goal...')
@@ -218,8 +246,13 @@ class GoToXYActionServer(Node):
         
         #datos iniciales
         self.update_feedback(feedback_msg, goal_handle, pos1) 
-        self.update_log(filename, feedback_msg, '1')
+        self.update_log(filename, feedback_msg, '1', pos1)
         
+        # estadisticas
+        st_initial_distance = feedback_msg.distance_to_goal
+        st_steps = 0
+        st_time = time.time()
+        st_distance["x"] = 0
         
         # Indicadores de cumplimiento de la meta
         pointing_at_goal = False
@@ -238,6 +271,9 @@ class GoToXYActionServer(Node):
                 if new_data:
                     new_data = False
                     self.get_logger().info('Girando...')
+                    
+                    # estadisticas
+                    st_steps += 1
                     
                     # Girar de acuerdo al ángulo
                     self.Turn(angle_difference, TURN_SPEED, TURN_MS)
@@ -258,7 +294,7 @@ class GoToXYActionServer(Node):
                     close_to_goal = distance_to_goal < MIN_DISTANCE
                     
                     self.update_feedback(feedback_msg, goal_handle, pos1) 
-                    self.update_log( filename, feedback_msg, '1')
+                    self.update_log( filename, feedback_msg, '1', pos1)
             
                     time.sleep(1/fps) 
 
@@ -266,6 +302,9 @@ class GoToXYActionServer(Node):
             if new_data:
                 new_data = False
                 self.get_logger().info('Avanzando...')
+                
+                # estadisticas
+                st_steps += 1
                 
                 distance_to_goal = self.CalcDistance(goal_handle, pos1)
                 close_to_goal = distance_to_goal < MIN_DISTANCE
@@ -283,13 +322,16 @@ class GoToXYActionServer(Node):
                         self.get_logger().info('De reversa: X={0} Y={1}'.format(pos1.x, pos1.y))
                 time.sleep(1/fps) 
             self.update_feedback(feedback_msg, goal_handle, pos1) 
-            self.update_log(filename, feedback_msg, '2')
+            self.update_log(filename, feedback_msg, '2', pos1)
             
         # 3- girar el angulo hasta que coincida con el goal_angle
             goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
             done = goal_angle_difference == 0
             
         while done == False:
+            # estadisticas
+            st_steps += 1
+            
             self.Turn(goal_angle_difference, TURN_SPEED, TURN_MS)
             time.sleep(1/fps)
             goal_angle_difference = self.GetAngleDifference(goal_handle.request.goal_angle, pos1.angle)
@@ -297,13 +339,28 @@ class GoToXYActionServer(Node):
             self.get_logger().info('Goal Angle Difference: {0}'.format(goal_angle_difference))
             
             self.update_feedback(feedback_msg, goal_handle, pos1) 
-            self.update_log(filename, feedback_msg, '3')
-                
-        self.get_logger().info('Meta cumplida!')
+            self.update_log(filename, feedback_msg, '3', pos1)
+    
         goal_handle.succeed()
         self.update_feedback(feedback_msg, goal_handle, pos1) 
-        self.update_log(filename, feedback_msg, '4')
+        self.update_log(filename, feedback_msg, '4', pos1)
+
+        self.get_logger().info('Meta cumplida!')
+
         
+        # estadisticas finales
+        st_time = abs(time.time() - st_time)
+        self.get_logger().info('Number of steps: {0}'.format(st_steps))
+        self.get_logger().info('Ellapsed time: {0} seconds'.format(st_time))
+        with open(filename,'a') as fd:
+            csvwriter = csv.writer(fd, delimiter ='|')
+            closing_header = ['Overall statistics','','','','','']
+            csvwriter.writerow(closing_header)
+            closing_header = ['Initial distance','Number of steps','Ellapsed time [seconds]','Travelled x', 'Travelled y', 'Travelled distance [pixels]']
+            csvwriter.writerow(closing_header)
+            data = [st_initial_distance, st_steps, st_time, st_distance["x"], st_distance["y"], (st_distance["x"]**2 + st_distance["y"]**2)**0.5]
+            csvwriter.writerow(data)
+            
         result = GoToXY.Result()
 #        result.final_id = feedback_msg.partial_id
         result.final_x = pos1.x
