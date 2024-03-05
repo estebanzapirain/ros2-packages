@@ -200,7 +200,7 @@ class GoToXYActionServer(Node):
         feedback_msg.robot_angle = pos1.angle
         feedback_msg.distance_to_goal = int(self.CalcDistance(goal_handle, pos1))
         feedback_msg.angle_difference = self.UpdateAngleDifference(goal_handle, pos1)
-        self.get_logger().info('Feedback: {0}'.format(feedback_msg))
+        #self.get_logger().info('Feedback: {0}'.format(feedback_msg))
     
     # actualizar el log
     def update_log(self, filename, feedback_msg, state, pos):
@@ -212,12 +212,14 @@ class GoToXYActionServer(Node):
         #estadisticas
         if first_pos:
             first_pos = False
-            prev_x = pos1.x
-            prev_y = pos1.y
+            prev_x = feedback_msg.robot_x
+            prev_y = feedback_msg.robot_y
         else:
-            st_distance["x"] += abs(pos.x - prev_x)
-            st_distance["y"] += abs(pos.y - prev_y)
-    
+            st_distance["x"] += abs(feedback_msg.robot_x - prev_x)
+            st_distance["y"] += abs(feedback_msg.robot_y - prev_y)
+            prev_x = feedback_msg.robot_x
+            prev_y = feedback_msg.robot_y
+            
     # función principal de procesamiento de meta
     def execute_callback(self, goal_handle):
         

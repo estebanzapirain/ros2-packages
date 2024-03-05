@@ -1,4 +1,0 @@
-goal_x|goal_y|goal_angle|robot_id||
-50|50|0|1||
-robot_x|robot_y|distance_to_goal|robot_angle|angle_difference|step
-50|47|3|0|-90|1
