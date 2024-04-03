@@ -116,10 +116,11 @@ int runCommand() {
             Serial.println();
 */
             Serial.write(pixy.blocks[j].signature); 
-            char xh = 'N';
-            if (pixy.blocks[j].x > 255){
-              xh = 'S';
-              }
+            //char xh = 'N';
+            //if (pixy.blocks[j].x > 255){
+            //  xh = 'S';
+            //  }
+            int xh = pixy.blocks[j].x / 256;
             int xl = pixy.blocks[j].x % 256;
             Serial.write(xh); // max(x) is 320, sends MSB(x)
             Serial.write(xl); // sends LSB(x)            
