@@ -108,7 +108,7 @@ void setup() {
 //  Serial.println("encrypted:");
   for (uint8_t i = 0; i < 16; i += 1)  {
     sprintf(campo,"%02X",num_ser[i]);
- //   Serial.print(campo);
+//    Serial.print(campo);
   }
 //  Serial.println();
 

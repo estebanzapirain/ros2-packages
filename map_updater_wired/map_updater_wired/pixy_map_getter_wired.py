@@ -103,7 +103,7 @@ class Publisher(Node):
                     print(msg.frame, msg.sig, msg.x, msg.y, msg.width, msg.height)
                     if (msg.width>MIN_SIZE) & (msg.height>MIN_SIZE): 
                         self.publisher_.publish(msg)
-                    # self.get_logger().info('Block: "%s"' % block)
+                    #self.get_logger().info('Block: "%s"' % block)
 
 
 def main(args=None):
