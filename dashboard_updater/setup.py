@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'cam_upd = dashboard_updater.cam_updater:main',  
+        'dash_upd = dashboard_updater.dash_updater:main',  
         ],
     },
 )

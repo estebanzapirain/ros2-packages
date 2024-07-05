@@ -1,0 +1,10 @@
+goal_x|goal_y|goal_angle|robot_id||
+50|50|90|1||
+robot_x|robot_y|distance_to_goal|robot_angle|angle_difference|step
+50|50|0|83|97|1
+50|50|0|83|97|1
+51|52|2|86|30|2
+51|52|2|86|30|4
+Overall statistics|||||
+Initial distance|Number of steps|Ellapsed time [seconds]|Travelled x|Travelled y|Travelled distance [pixels]
+0|2|0.25381994247436523|1|2445|2445.0002044989687
