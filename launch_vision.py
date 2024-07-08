@@ -19,14 +19,14 @@ def generate_launch_description():
         package="goal_updater",
         executable="goal_upd"
     )
-#    node5 = Node(
-#        package="dashboard_updater",
-#        executable="dash_upd"
-#    )
+    node5 = Node(
+        package="dashboard_updater",
+        executable="dash_upd"
+    )
     ld.add_action(node1)
     ld.add_action(node2)
     ld.add_action(node3)
     ld.add_action(node4)
-#    ld.add_action(node5)
+    ld.add_action(node5)
     
     return ld
