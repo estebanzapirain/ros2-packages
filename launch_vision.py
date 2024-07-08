@@ -7,10 +7,10 @@ def generate_launch_description():
         package="map_updater_wired",
         executable="map_getter",
     )
-    node2 = Node(
-        package="map_viewer",
-        executable="map_view"
-    )
+#    node2 = Node(
+#        package="map_viewer",
+#        executable="map_view"
+#    )
     node3 = Node(
         package="robot_positions",
         executable="robot_pos_updater"
@@ -24,7 +24,7 @@ def generate_launch_description():
         executable="dash_upd"
     )
     ld.add_action(node1)
-    ld.add_action(node2)
+#    ld.add_action(node2)
     ld.add_action(node3)
     ld.add_action(node4)
     ld.add_action(node5)
